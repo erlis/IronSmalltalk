@@ -1,0 +1,87 @@
+Control structions:
+	if-then-else
+	while
+
+
+Classes contain code.
+Objects contain scope.
+
+An object is fairly generic.  It contains a reference to it's class, and a collection of instance variables.
+
+
+
+Number (integer, float) := (Base)?(Integer)(.Integer)?(Exponent)
+Integer := [+-]?[0-9a-zA-Z]+
+Base := [1-9][0-9]*r
+Exponent := [eE](Integer)
+
+Character := $(character value)
+String := '(character value)*'
+Symbol := #(variable-style name)
+Array := #\(value value value\) "Can be any value"
+Comment := \" stuff \"
+
+
+Boolean (true, false)
+Block (code)
+nil (null value)
+
+Basic messages: +, -, *, /, \\ (modulus), @ (point := 2@10), <, >, <=, >=, =, := (assign), ^ (return)
+
+User-defined messages must use the variable
+
+Messages are parsed left-to-right.  Parenthesis can be used to specify order of operation.
+
+
+Code blocks are specified as follows:
+
+[
+	a := 1 + 1.
+	b := a * 2.
+	^c
+]
+
+A period is used to separate lines of code.  If there is only one line of code, no period is required.
+In a block, if the return (^) message is not explicitely used, the value on the top of the stack will be returned.  a.k.a. the ^ message pushes it's parameter to the top of the stack.
+
+A code block is executed when it receives the "value" message.
+
+
+
+
+
+Block tokens:
+	[			open block
+	]			close block
+	.			end statement
+	^			return
+
+
+block value.
+block value: arg.
+block valueWithArguments: anArray.
+
+
+
+
+
+<ExpressionSequence> := <Expression> [ \. <ExpressionSequence> ] \.?
+<Expression> := <Receiver> <MessageSequence>
+<MessageSequence> := <Message> [ \; <MessageSequence> ]
+<Message> := <Name> <Argument>
+<Name> := <Identifier><Colon> | <UnaryIdentifier>
+<Argument> := <OpenParenthesis> <Argument> <CloseParenthesis> | <Expression>
+<Identifier> := [A-Za-z][A-Za-z0-9]
+<Colon> := [:]
+<OpenParenthesis> := [(]
+<CloseParenthesis> := [)]
+
+<CodeBlock> := <OpenBlock> <ArgumentBlock>? <LocalBlock>? <ExpressionSequence> <CloseBlock>
+<ArgumentBlock> := <Colon> <Identifier>+ <Pipe> "arguments passed to the code block"
+<LocalBlock> := <Pipe> <Identifier>+ <Pipe> "local variables"
+<OpenBlock> := [[]
+<CloseBlock> := []]
+<Pipe> := [|]
+
+
+A method should associate a CodeBlock with a collection of selector names.  Each selector name is associated with a CodeBlock parameter in sequence.
