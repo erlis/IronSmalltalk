@@ -15,6 +15,8 @@ namespace IronSmalltalk
     {
         #region Variables
 
+        private static readonly Guid LANGUAGE_GUID = new Guid("A1C36494-7D3E-4798-99A7-80ECE2180AC5");
+
         /// <summary>
         /// Dummy span.
         /// I don't know what this is actually for yet.
@@ -28,11 +30,39 @@ namespace IronSmalltalk
         public IronSmalltalkLanguageContext(ScriptDomainManager manager)
             : base(manager)
         {
-            Binder = new IronSmalltalkBinder(manager);
+            Binder = new IronSmalltalkBinder(new CodeContext(new Scope(this), this));
 
             // TO-DO: provide built-in functions here.
         }
 
+        #endregion
+
+        #region Properties
+        
+        public override Guid LanguageGuid
+        {
+            get
+            {
+                return LANGUAGE_GUID;
+            }
+        }
+
+        public override string DisplayName
+        {
+            get
+            {
+                return "IronSmalltalk";
+            }
+        }
+
+        public override Version LanguageVersion
+        {
+            get
+            {
+                return new Version(0, 1, 0, 0);
+            }
+        }
+        
         #endregion
 
         #region Methods
@@ -63,6 +93,21 @@ namespace IronSmalltalk
             */
         }
 
+        public override bool TryLookupGlobal(CodeContext context, SymbolId name, out object value)
+        {
+            // TO DO: search a global list of SmallObjects for the given name.
+
+            //string symbolName = SymbolTable.IdToString(name);
+            //if (GlobalContext.HasSymbol(symbolName))
+            //{
+            //    value = GlobalContext.Get(name);
+            //    return true;
+            //}
+
+            return base.TryLookupGlobal(context, name, out value);
+        }
+
+        /*
         /// <summary>
         /// Get statements.
         /// </summary>
@@ -222,6 +267,7 @@ namespace IronSmalltalk
             // Return result
             return function.MakeLambda();
         }
+        */
 
         #endregion
     }

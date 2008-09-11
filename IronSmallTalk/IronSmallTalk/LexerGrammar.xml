@@ -7,7 +7,7 @@
 	<Token name="Selector" expression="[a-zA-Z][a-zA-Z0-9]*:" skip="false" ignorecase="false" />
 	<Token name="Identifier" expression="[a-zA-Z][a-zA-Z0-9]*" skip="false" ignorecase="false" />
 	<Token name="Assign" expression=":=" skip="false" ignorecase="false" />
-	<Token name="Return" expression="^" skip="false" ignorecase="false" />
+	<Token name="Return" expression="\^" skip="false" ignorecase="false" />
 	<Token name="ExpressionSeparator" expression="\." skip="false" ignorecase="false" />
 	<Token name="MessageSeparator" expression=";" skip="false" ignorecase="false" />
 	<Token name="OpenBlock" expression="\[" skip="false" ignorecase="false" />

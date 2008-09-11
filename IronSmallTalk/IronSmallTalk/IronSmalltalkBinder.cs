@@ -8,12 +8,12 @@ namespace IronSmalltalk
     /// <summary>
     /// Binder for the IronSmalltalk language context.
     /// </summary>
-    public class IronSmalltalkBinder : DefaultBinder
+    public class IronSmalltalkBinder : ActionBinder
     {
         #region Constructors
 
-        public IronSmalltalkBinder(ScriptDomainManager manager)
-            : base(manager)
+        public IronSmalltalkBinder(CodeContext context)
+            : base(context)
         {
         }
 

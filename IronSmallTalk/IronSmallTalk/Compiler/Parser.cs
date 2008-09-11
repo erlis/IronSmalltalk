@@ -64,9 +64,9 @@ namespace IronSmalltalk.Compiler
         {
             try
             {
-                _program = Utils.Lambda(typeof(object), "IronSmalltalk");
+                _program = Ast.Lambda("IronSmalltalk", typeof(object));
                 ParseStatements();
-                _program.Body = Utils.Block(_span, _expressions);
+                _program.Body = Ast.Block(_expressions);
                 _result = _program.MakeLambda();
             }
             catch (Exception)
@@ -89,17 +89,50 @@ namespace IronSmalltalk.Compiler
 
         private Expression ParseStatement()
         {
-            switch (_tokens.Peek())
+            // First token in any statement should be a receiver (or a block, but we'll handle those later):
+            Expression expr = ParseReceiver();
+            if (expr == null)
             {
-                case "LocalBlock":
-                    ParseLocalBlock();
-                    break;
-                default:
-                    ParseExpression();
-                    break;
+                throw new Exception("Invalid receiver.");
             }
+
+            if (TryParseReturnReceiver(ref expr))
+            {
+                return expr;
+            }
+            // else, try to parse an assignment
+            // else, do other stuff with the expression
+            
+            return expr;
         }
 
+        private Expression ParseReceiver()
+        {
+            Lexer.Token token = _tokens.Read();
+            if (token.Name == "Character")
+            {
+                return Ast.Constant(token.Value[1]);
+            }
+            return null;
+        }
+
+        private bool TryParseReturnReceiver(ref Expression expr)
+        {
+            if (_tokens.AtEnd)
+            {
+                expr = Ast.Return(expr);
+                return true;
+            }
+            if (_tokens.Peek().Name == "ExpressionSeparator")
+            {
+                expr = Ast.Return(expr);
+                _tokens.Read();
+                return true;
+            }
+            return false;
+        }
+
+        /*
         private Expression ParseExpression()
         {
             Lexer.Token token = _tokens.Read();
@@ -142,6 +175,7 @@ namespace IronSmalltalk.Compiler
                 }
             }
         }
+        */
 
         #endregion
     }

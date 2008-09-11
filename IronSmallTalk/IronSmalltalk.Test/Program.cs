@@ -1,6 +1,7 @@
 ﻿using IronSmalltalk.Compiler;
 using Microsoft.Scripting.Hosting;
 using System;
+using Microsoft.Scripting;
 
 namespace IronSmalltalk.Test
 {
@@ -8,7 +9,30 @@ namespace IronSmalltalk.Test
     {
         public static void Main(string[] args)
         {
-            LexerTest();
+            //LexerTest();
+            ParserTest();
+        }
+
+        private static void ParserTest()
+        {
+            // Create runtime:
+            ScriptRuntime runtime = ScriptRuntime.Create();
+
+            runtime.LoadAssembly(typeof(string).Assembly);
+
+            // Load engine:
+            ScriptEngine engine = runtime.GetEngine(typeof(IronSmalltalkLanguageContext));
+
+            // Create a scope at global level:
+            ScriptScope globals = engine.CreateScope();
+
+            // Execute command:
+            ScriptSource src = engine.CreateScriptSourceFromString("$A. $B. $C.", SourceCodeKind.Statements);
+            object obj = src.Execute(globals);
+            Console.WriteLine(obj);
+
+            // Shutdown engine:
+            engine.Shutdown();
         }
 
         private static void LexerTest()
@@ -19,7 +43,7 @@ namespace IronSmalltalk.Test
             "haha! !($%(#&.\"'''; asLowercase. -3.14159265359 $c $A $0 $! 3r209E1" +
             "1e1 3r1e1 3rAEe45 5r-123.53e9 Ar12.7" +
             "# #12 #AB12 12: asLowercase:" +
-            "'hello ''\n'''' world!'";
+            "'hello ''\n'''' world!' setRed:green:blue:";
 
             Lexer lexer = new Lexer("LexerGrammar.xml");
             Lexer.TokenStream tokens = lexer.Tokenize(code);

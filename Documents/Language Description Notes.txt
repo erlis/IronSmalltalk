@@ -85,3 +85,6 @@ block valueWithArguments: anArray.
 
 
 A method should associate a CodeBlock with a collection of selector names.  Each selector name is associated with a CodeBlock parameter in sequence.
+
+
+The "value" selector is automatically applied to all executed statements, and returns last object created by the expression. "[:x | x + x + x] value: 3 value." returns 9.  "1 + 1" is the same as "1 + 1 value".
