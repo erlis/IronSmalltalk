@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Lexer>
+	<Token name="EOL" expression="\r?\n" skip="true" ignorecase="false" />
+	<Token name="WhiteSpace" expression="[ \t]+" skip="true" ignorecase="false" />
+	
+	<Token name="Symbol" expression="#[a-zA-Z][a-zA-Z0-9]*" skip="false" ignorecase="false" />
+	<Token name="Selector" expression="[a-zA-Z][a-zA-Z0-9]*:" skip="false" ignorecase="false" />
+	<Token name="Identifier" expression="[a-zA-Z][a-zA-Z0-9]*" skip="false" ignorecase="false" />
+	<Token name="Assign" expression=":=" skip="false" ignorecase="false" />
+	<Token name="Return" expression="^" skip="false" ignorecase="false" />
+	<Token name="ExpressionSeparator" expression="\." skip="false" ignorecase="false" />
+	<Token name="MessageSeparator" expression=";" skip="false" ignorecase="false" />
+	<Token name="OpenBlock" expression="\[" skip="false" ignorecase="false" />
+	<Token name="CloseBlock" expression="\]" skip="false" ignorecase="false" />
+	<Token name="LocalBlock" expression="\|" skip="false" ignorecase="false" />
+
+	<Token name="Float" expression="([0-9]+r)?[-+]?[0-9A-Z]*\.[0-9A-Z]+(e[0-9]+)?" skip="false" ignorecase="false" />
+	<Token name="Integer" expression="([0-9]+r)?[-+]?[0-9A-Z]+(e[0-9]+)?" skip="false" ignorecase="false" />
+
+	<Token name="Character" expression="\$." skip="false" ignorecase="false" />
+	<Token name="String" expression="'(?:[^']|'')*'" skip="false" ignorecase="false" />
+
+	<Token name="Comment" expression="\&quot;.*\&quot;" skip="true" ignorecase="false" />
+
+	<Token name="Invalid" expression="[^\s]+" skip="false" ignorecase="false" />
+</Lexer>
