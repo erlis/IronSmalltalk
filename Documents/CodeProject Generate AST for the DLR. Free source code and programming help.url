@@ -10,3 +10,9 @@ BASEURL=http://www.codeproject.com/KB/codegen/astdlrtest.aspx
 [DOC#967]
 BASEURL=http://www.codeproject.com/script/Adm/ServeLinks.aspx?C=False&ids=5234,6456,5229
 ORIGURL=/script/Adm/ServeLinks.aspx?C=False&ids=5234,6456,5229
+[DOC#469]
+BASEURL=http://www.codeproject.com/script/Adm/ServeHTML.aspx?C=False&adid=7098
+ORIGURL=/script/Adm/ServeHTML.aspx?C=False&adid=7098
+[DOC#965]
+BASEURL=http://www.codeproject.com/script/Adm/ServeLinks.aspx?C=False&ids=5229,6456,5234
+ORIGURL=/script/Adm/ServeLinks.aspx?C=False&ids=5229,6456,5234

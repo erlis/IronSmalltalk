@@ -49,13 +49,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeBlock\CoreCodeBlock.cs" />
+    <Compile Include="CodeBlock\ICodeBlock.cs" />
+    <Compile Include="CodeBlock\SmallCodeBlock.cs" />
     <Compile Include="Compiler\Lexer.cs" />
     <Compile Include="Compiler\Parser.cs" />
+    <Compile Include="ICloneable.cs" />
+    <Compile Include="ICodeContext.cs" />
     <Compile Include="IronSmalltalkBinder.cs" />
     <Compile Include="IronSmalltalkLanguageContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\ISmallObject.cs" />
+    <Compile Include="Runtime\ISmallPrimitive.cs" />
+    <Compile Include="Runtime\SmallCharacter.cs" />
     <Compile Include="Runtime\SmallClass.cs" />
+    <Compile Include="Runtime\SmallFloat.cs" />
+    <Compile Include="Runtime\SmallInteger.cs" />
     <Compile Include="Runtime\SmallObject.cs" />
+    <Compile Include="Runtime\SmallPrimitive.cs" />
+    <Compile Include="Runtime\SmallString.cs" />
+    <Compile Include="Runtime\SmallSymbol.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LexerGrammar.xml">

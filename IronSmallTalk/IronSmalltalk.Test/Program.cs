@@ -10,7 +10,8 @@ namespace IronSmalltalk.Test
         public static void Main(string[] args)
         {
             //LexerTest();
-            ParserTest();
+            ObjectTest();
+            //ParserTest();
         }
 
         private static void ParserTest()
@@ -33,6 +34,14 @@ namespace IronSmalltalk.Test
 
             // Shutdown engine:
             engine.Shutdown();
+        }
+
+        private static void ObjectTest()
+        {
+            SmallCharacter ch = new SmallCharacter("$P");
+            Console.WriteLine(ch);
+            Console.WriteLine(ch.SendMessage("value"));
+            Console.WriteLine(ch.SendMessage("asLowercase"));
         }
 
         private static void LexerTest()

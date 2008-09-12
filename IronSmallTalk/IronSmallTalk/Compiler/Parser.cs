@@ -111,7 +111,7 @@ namespace IronSmalltalk.Compiler
             Lexer.Token token = _tokens.Read();
             if (token.Name == "Character")
             {
-                return Ast.Constant(token.Value[1]);
+                return Ast.Constant(new SmallCharacter(token.Value));
             }
             return null;
         }
