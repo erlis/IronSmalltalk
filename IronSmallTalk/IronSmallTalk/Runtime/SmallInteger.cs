@@ -8,6 +8,14 @@ namespace IronSmalltalk
     {
         #region Classes
 
+        public class value : CoreCodeBlock
+        {
+            public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
+            {
+                return context as SmallObject;
+            }
+        }
+
         public class negated : CoreCodeBlock
         {
             public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
@@ -67,12 +75,13 @@ namespace IronSmalltalk
 
         private void InitializeInstanceVariables()
         {
-            SymbolTable.Add(new SmallSymbol("#value"), this);
+            //SymbolTable.Add(new SmallSymbol("#value"), this);
         }
 
         private void InitializeSelectors()
         {
-            AttachSelector("negated", new negated());
+            AttachSelector(new SmallSymbol("#value"), new value());
+            AttachSelector(new SmallSymbol("#negated"), new negated());
         }
 
         protected override void Parse()
@@ -120,13 +129,15 @@ namespace IronSmalltalk
                     throw new Exception(string.Format("Incorrect integer base: '{0}'", TokenText));
                 }
 
-                Value += (int)(subValue * Math.Pow(10, tokenText.Length - index - 1));
+                Value += (int)(subValue * Math.Pow(radix, tokenText.Length - index - 1));
             }
 
             if (isNegative)
             {
                 Value = -Value;
             }
+
+            Value *= (int)Math.Pow(10, exponent);
         }
 
         #endregion

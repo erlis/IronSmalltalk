@@ -7,7 +7,7 @@ namespace IronSmalltalk
     {
         #region Variables
 
-        private Dictionary<string, ICodeBlock> _selectors;
+        private Dictionary<SmallSymbol, ICodeBlock> _selectors;
 
         #endregion
 
@@ -16,7 +16,7 @@ namespace IronSmalltalk
         public SmallClass(SmallClass baseClass)
             : base(baseClass)
         {
-            _selectors = new Dictionary<string, ICodeBlock>();
+            _selectors = new Dictionary<SmallSymbol, ICodeBlock>();
         }
 
         public SmallClass()
@@ -28,7 +28,7 @@ namespace IronSmalltalk
 
         #region Methods
 
-        protected void AttachSelector(string selectorName, ICodeBlock codeBlock)
+        protected void AttachSelector(SmallSymbol selectorName, ICodeBlock codeBlock)
         {
             if (_selectors.ContainsKey(selectorName))
             {
@@ -40,7 +40,7 @@ namespace IronSmalltalk
             }
         }
 
-        protected void DetachSelector(string selectorName)
+        protected void DetachSelector(SmallSymbol selectorName)
         {
             if (_selectors.ContainsKey(selectorName))
             {
@@ -48,22 +48,22 @@ namespace IronSmalltalk
             }
             else
             {
-                throw new Exception(string.Format("Selector '{0}' is not defined.", selectorName));
+                throw new MessageNotUnderstood(this.GetType(), selectorName);
             }
         }
 
-        public override ICodeBlock FindSelector(string selectorName)
+        public override ICodeBlock FindSelector(SmallSymbol selectorName)
         {
-            foreach (string name in _selectors.Keys)
+            foreach (SmallSymbol name in _selectors.Keys)
             {
-                if (selectorName == name)
+                if (selectorName.Equals(name))
                 {
                     return _selectors[name];
                 }
             }
             if ((Class == null) || (Class == this))
             {
-                throw new Exception(string.Format("Selector '{0}' is not defined.", selectorName));
+                throw new MessageNotUnderstood(this.GetType(), selectorName);
             }
             return Class.FindSelector(selectorName);
         }

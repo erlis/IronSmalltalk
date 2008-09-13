@@ -32,6 +32,7 @@ namespace IronSmalltalk
             string tokenText = TokenText;
             int radix = 10;
             int exponent = 0;
+            bool isNegative = false;
 
             if (TokenText.Contains("r")) // get the radix
             {
@@ -44,6 +45,12 @@ namespace IronSmalltalk
                 string[] arr = tokenText.Split('e');
                 exponent = int.Parse(arr[1]);
                 tokenText = arr[0];
+            }
+
+            if (tokenText.Contains("-")) // get the negative
+            {
+                tokenText = tokenText.Replace("-", "");
+                isNegative = true;
             }
 
             // Parse the floating-point number:
@@ -75,15 +82,20 @@ namespace IronSmalltalk
 
                 if (parsingDecimal)
                 {
-                    Value += subValue / Math.Pow(10, index - decimalPosition);
+                    Value += subValue / Math.Pow(radix, index - decimalPosition);
                 }
                 else
                 {
-                    Value += subValue * Math.Pow(10, decimalPosition - index - 1);
+                    Value += subValue * Math.Pow(radix, decimalPosition - index - 1);
                 }
             }
 
-            Value = TokenText[1];
+            if (isNegative)
+            {
+                Value = -Value;
+            }
+
+            Value *= Math.Pow(10, exponent);
         }
 
         #endregion

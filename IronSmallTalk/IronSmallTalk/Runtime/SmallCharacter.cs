@@ -8,20 +8,47 @@ namespace IronSmalltalk
     {
         #region Classes
 
-        public class asLowercase : CoreCodeBlock
-        {
-            public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
-            {
-                string value = (context as SmallObject).SendMessage("value").ToString();
-                return new SmallCharacter(string.Format("${0}", char.ToLower(value[0])));
-            }
-        }
-
         public class value : CoreCodeBlock
         {
             public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
             {
                 return context as SmallObject;
+            }
+        }
+
+        /// <summary>
+        /// Return the lower-case version of the input character:
+        /// </summary>
+        public class asLowercase : CoreCodeBlock
+        {
+            public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
+            {
+                string value = (context as SmallObject).SendMessage(new SmallSymbol("#value")).ToString();
+                return new SmallCharacter(string.Format("${0}", char.ToLower(value[0])));
+            }
+        }
+
+        /// <summary>
+        /// Return the upper-case version of the input character:
+        /// </summary>
+        public class asUppercase : CoreCodeBlock
+        {
+            public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
+            {
+                string value = (context as SmallObject).SendMessage(new SmallSymbol("#value")).ToString();
+                return new SmallCharacter(string.Format("${0}", char.ToUpper(value[0])));
+            }
+        }
+
+        /// <summary>
+        /// Return the next character in the ASCII sequence.
+        /// </summary>
+        public class next : CoreCodeBlock
+        {
+            public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
+            {
+                string value = (context as SmallObject).SendMessage(new SmallSymbol("#value")).ToString();
+                return new SmallCharacter(string.Format("${0}", (char)((int)value[0] + 1)));
             }
         }
 
@@ -64,8 +91,10 @@ namespace IronSmalltalk
 
         private void InitializeSelectors()
         {
-            AttachSelector("value", new value());
-            AttachSelector("asLowercase", new asLowercase());
+            AttachSelector(new SmallSymbol("#value"), new value());
+            AttachSelector(new SmallSymbol("#asLowercase"), new asLowercase());
+            AttachSelector(new SmallSymbol("#asUppercase"), new asUppercase());
+            AttachSelector(new SmallSymbol("#next"), new next());
         }
 
         protected override void Parse()

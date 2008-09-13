@@ -76,12 +76,12 @@ namespace IronSmalltalk
 
         #region Methods
 
-        public virtual ICodeBlock FindSelector(string selectorName)
+        public virtual ICodeBlock FindSelector(SmallSymbol selectorName)
         {
             return _class.FindSelector(selectorName);
         }
 
-        public ICodeBlock FindSuperSelector(string selectorName)
+        public ICodeBlock FindSuperSelector(SmallSymbol selectorName)
         {
             if (_class.Class == null)
             {
@@ -94,7 +94,7 @@ namespace IronSmalltalk
         /// Only sends unary messages right now.
         /// </summary>
         /// <param name="message"></param>
-        public SmallObject SendMessage(string message)
+        public SmallObject SendMessage(SmallSymbol message)
         {
             return FindSelector(message).Execute(this);
         }

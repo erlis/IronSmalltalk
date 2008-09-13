@@ -2,8 +2,9 @@
 <Lexer>
 	<Token name="EOL" expression="\r?\n" skip="true" ignorecase="false" />
 	<Token name="WhiteSpace" expression="[ \t]+" skip="true" ignorecase="false" />
-	
-	<Token name="Symbol" expression="#[a-zA-Z][a-zA-Z0-9]*" skip="false" ignorecase="false" />
+
+	<Token name="Symbol" expression="#[a-zA-Z:][a-zA-Z0-9:]*" skip="false" ignorecase="false" />
+	<Token name="Symbol" expression="#'(?:[^']|'')*'" skip="false" ignorecase="false" />
 	<Token name="Selector" expression="[a-zA-Z][a-zA-Z0-9]*:" skip="false" ignorecase="false" />
 	<Token name="Identifier" expression="[a-zA-Z][a-zA-Z0-9]*" skip="false" ignorecase="false" />
 	<Token name="Assign" expression=":=" skip="false" ignorecase="false" />
