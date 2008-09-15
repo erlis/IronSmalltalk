@@ -59,6 +59,7 @@
     <Compile Include="IronSmalltalkBinder.cs" />
     <Compile Include="IronSmalltalkLanguageContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\GlobalDictionary.cs" />
     <Compile Include="Runtime\ISmallObject.cs" />
     <Compile Include="Runtime\ISmallPrimitive.cs" />
     <Compile Include="Runtime\MessageNotUnderstood.cs" />

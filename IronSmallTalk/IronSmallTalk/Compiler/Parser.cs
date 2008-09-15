@@ -92,6 +92,10 @@ namespace IronSmalltalk.Compiler
             {
                 _expressions.Add(ParseStatement());
             }
+            if (_expressions.Count == 0)
+            {
+                _expressions.Add(Ast.Null());
+            }
         }
 
         private Expression ParseStatement()
@@ -99,13 +103,23 @@ namespace IronSmalltalk.Compiler
             // First token in any statement should be a receiver (or a block, but we'll handle those later):
             Expression expr = ParseReceiver();
 
+            // If the first token wasn't a receiver, then this has to be an assignment:
+            if (expr == null)
+            {
+                return ParseAssignStatement();
+            }
+
+            if (_tokens.Peek().Name == "Assign")
+            {
+                // Assign a previously declared variable:
+                return ParseAssignStatement(expr);
+            }
+
             // Should we just return the receiver?
             if (VerifyEndOfStatement())
             {
                 return expr;
             }
-
-            // TO DO: try to parse an assignment.
 
             // Parse messages to the receiver:
             expr = ParseMessages(expr);
@@ -118,6 +132,59 @@ namespace IronSmalltalk.Compiler
             throw new Exception("End of statement expected.");
         }
 
+        /// <summary>
+        /// Assign a global variable.
+        /// </summary>
+        /// <returns></returns>
+        private Expression ParseAssignStatement()
+        {
+            Lexer.Token nameToken = _tokens.Read();
+            if (nameToken.Name != "Identifier")
+            {
+                throw new Exception("Identifier expected.");
+            }
+            string variableName = nameToken.Value;
+
+            if (_tokens.Read().Name != "Assign")
+            {
+                throw new Exception("':=' expected.");
+            }
+
+            Expression value = ParseStatement();
+
+            if (VerifyEndOfStatement())
+            {
+                return Ast.Call(
+                        typeof(GlobalDictionary).GetMethod("Add", new Type[] { typeof(string), typeof(SmallObject) }),
+                        Ast.Constant(variableName), value);
+            }
+
+            throw new Exception("End of statement expected.");
+        }
+
+        /// <summary>
+        /// Assign a global variable that has already been created.
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns></returns>
+        private Expression ParseAssignStatement(Expression receiver)
+        {
+            if (_tokens.Read().Name != "Assign")
+            {
+                throw new Exception("':=' expected.");
+            }
+
+            Expression value = ParseStatement();
+
+            return Ast.Call(
+                typeof(GlobalDictionary).GetMethod("Set", new Type[] { typeof(string), typeof(SmallObject) }),
+                receiver, value);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Null if the next token set is not a receiver.</returns>
         private Expression ParseReceiver()
         {
             Expression receiver;
@@ -136,7 +203,7 @@ namespace IronSmalltalk.Compiler
                 return receiver;
             }
 
-            throw new Exception("Invalid receiver.");
+            return null;
         }
 
         private Expression ParsePrimitiveReceiver()
@@ -251,7 +318,15 @@ namespace IronSmalltalk.Compiler
                 return null;
             }
 
-            throw new NotImplementedException("Non-primitive receivers are not yet implemented.");
+            if (GlobalDictionary.Contains(token.Value))
+            {
+                _tokens.Read();
+                return Ast.Call(
+                        typeof(GlobalDictionary).GetMethod("Get", new Type[] { typeof(string) }),
+                        Ast.Constant(token.Value));
+            }
+
+            return null;
         }
 
         private Expression ParseMessages(Expression receiver)
