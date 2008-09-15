@@ -308,15 +308,13 @@ namespace IronSmalltalk.Compiler
 
         private Expression ParseBinaryMessage(Expression receiver)
         {
-            //List<Lexer.Token> selectors = new List<Lexer.Token>();
-            List<Expression> arguments = new List<Expression>();
+            List<Expression> parameters = new List<Expression>();
             string selectorName = string.Empty;
 
             do
             {
                 if (_tokens.Peek().Name == "Selector")
                 {
-                    //selectors.Add(_tokens.Read());
                     selectorName += _tokens.Read().Value;
                 }
                 else
@@ -324,21 +322,21 @@ namespace IronSmalltalk.Compiler
                     throw new Exception("Selector was expected.");
                 }
 
-                Expression arg = ParsePrimitiveReceiver();
+                Expression arg = ParseParameter();
                 if (arg == null)
                 {
-                    throw new Exception("Primitive expression expected.");
+                    throw new Exception("Parameter expected.");
                 }
                 else
                 {
-                    arguments.Add(arg);
+                    parameters.Add(arg);
                 }
             } while (!_tokens.AtEnd && _tokens.Peek().Name == "Selector");
 
             SmallSymbol binaryMessageSymbol = new SmallSymbol(string.Format("#{0}", selectorName));
 
             MethodInfo sendMessage;
-            if (arguments.Count == 1)
+            if (parameters.Count == 1)
             {
                 sendMessage = typeof(SmallObject).GetMethod("SendMessage", new Type[] { typeof(SmallSymbol), typeof(SmallObject) });
             }
@@ -347,9 +345,58 @@ namespace IronSmalltalk.Compiler
                 sendMessage = typeof(SmallObject).GetMethod("SendMessage", new Type[] { typeof(SmallSymbol), typeof(SmallObject[]) });
             }
 
-            arguments.Insert(0, Ast.Constant(binaryMessageSymbol));
+            parameters.Insert(0, Ast.Constant(binaryMessageSymbol));
 
-            receiver = Ast.Call(receiver, sendMessage, arguments.ToArray());
+            receiver = Ast.Call(receiver, sendMessage, parameters.ToArray());
+
+            return receiver;
+        }
+
+        /// <summary>
+        /// Parse a message parameter.
+        /// </summary>
+        /// <returns></returns>
+        private Expression ParseParameter()
+        {
+            if (_tokens.Peek().Name == "OpenParen")
+            {
+                return ParseSubStatement();
+            }
+            else
+            {
+                return ParseReceiver();
+            }
+        }
+
+        /// <summary>
+        /// Parse a receiver/message combination.
+        /// </summary>
+        /// <returns></returns>
+        private Expression ParseSubStatement()
+        {
+            if (_tokens.Peek().Name != "OpenParen")
+            {
+                throw new Exception("'(' expected.");
+            }
+            _tokens.Read();
+
+            Expression receiver = ParseReceiver();
+
+            // Should we just return the receiver?
+            if (_tokens.Peek().Name == "CloseParen")
+            {
+                _tokens.Read();
+                return receiver;
+            }
+
+            // Parse messages to the receiver:
+            receiver = ParseMessages(receiver);
+
+            if (_tokens.Peek().Name != "CloseParen")
+            {
+                throw new Exception("')' expected.");
+            }
+            _tokens.Read();
 
             return receiver;
         }

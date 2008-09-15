@@ -14,6 +14,8 @@
 	<Token name="OpenBlock" expression="\[" skip="false" ignorecase="false" />
 	<Token name="CloseBlock" expression="\]" skip="false" ignorecase="false" />
 	<Token name="LocalBlock" expression="\|" skip="false" ignorecase="false" />
+	<Token name="OpenParen" expression="\(" skip="false" ignorecase="false" />
+	<Token name="CloseParen" expression="\)" skip="false" ignorecase="false" />
 
 	<Token name="Float" expression="([0-9]+r)?[-+]?[0-9A-Z]*\.[0-9A-Z]+(e[0-9]+)?" skip="false" ignorecase="false" />
 	<Token name="Integer" expression="([0-9]+r)?[-+]?[0-9A-Z]+(e[0-9]+)?" skip="false" ignorecase="false" />
