@@ -308,29 +308,50 @@ namespace IronSmalltalk.Compiler
 
         private Expression ParseBinaryMessage(Expression receiver)
         {
-            List<Lexer.Token> selectors = new List<Lexer.Token>();
-            List<Lexer.Token> arguments = new List<Lexer.Token>();
+            //List<Lexer.Token> selectors = new List<Lexer.Token>();
+            List<Expression> arguments = new List<Expression>();
+            string selectorName = string.Empty;
 
-            while (true)
+            do
             {
                 if (_tokens.Peek().Name == "Selector")
                 {
-                    selectors.Add(_tokens.Read());
+                    //selectors.Add(_tokens.Read());
+                    selectorName += _tokens.Read().Value;
                 }
                 else
                 {
                     throw new Exception("Selector was expected.");
                 }
 
-                if (_tokens.Peek().Name != "Selector")
+                Expression arg = ParsePrimitiveReceiver();
+                if (arg == null)
                 {
-                    arguments.Add(_tokens.Read());
+                    throw new Exception("Primitive expression expected.");
                 }
                 else
                 {
-                    throw new Exception("Argument was expected.");
+                    arguments.Add(arg);
                 }
+            } while (!_tokens.AtEnd && _tokens.Peek().Name == "Selector");
+
+            SmallSymbol binaryMessageSymbol = new SmallSymbol(string.Format("#{0}", selectorName));
+
+            MethodInfo sendMessage;
+            if (arguments.Count == 1)
+            {
+                sendMessage = typeof(SmallObject).GetMethod("SendMessage", new Type[] { typeof(SmallSymbol), typeof(SmallObject) });
             }
+            else
+            {
+                sendMessage = typeof(SmallObject).GetMethod("SendMessage", new Type[] { typeof(SmallSymbol), typeof(SmallObject[]) });
+            }
+
+            arguments.Insert(0, Ast.Constant(binaryMessageSymbol));
+
+            receiver = Ast.Call(receiver, sendMessage, arguments.ToArray());
+
+            return receiver;
         }
 
         private bool VerifyEndOfStatement()

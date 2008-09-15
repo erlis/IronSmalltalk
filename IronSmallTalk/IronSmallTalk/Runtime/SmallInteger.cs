@@ -20,7 +20,7 @@ namespace IronSmalltalk
         {
             public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
             {
-                SmallInteger n = context.SymbolTable[new SmallSymbol("#value")] as SmallInteger;
+                SmallInteger n = (context as SmallObject).SendMessage(new SmallSymbol("#value")) as SmallInteger;
                 return new SmallInteger(-n.Value);
             }
         }
@@ -35,6 +35,86 @@ namespace IronSmalltalk
             }
         }
         */
+
+        public class add : CoreCodeBlock
+        {
+            public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
+            {
+                if (parameters.Length != 1)
+                {
+                    throw new Exception("One parameter expected.");
+                }
+
+                SmallInteger n1 = (context as SmallObject).SendMessage(new SmallSymbol("#value")) as SmallInteger;
+                SmallInteger n2 = parameters[0] as SmallInteger;
+                if (n2 == null)
+                {
+                    throw new Exception("Integer parameter expected.");
+                }
+
+                return new SmallInteger(n1.Value + n2.Value);
+            }
+        }
+
+        public class subtract : CoreCodeBlock
+        {
+            public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
+            {
+                if (parameters.Length != 1)
+                {
+                    throw new Exception("One parameter expected.");
+                }
+
+                SmallInteger n1 = (context as SmallObject).SendMessage(new SmallSymbol("#value")) as SmallInteger;
+                SmallInteger n2 = parameters[0] as SmallInteger;
+                if (n2 == null)
+                {
+                    throw new Exception("Integer parameter expected.");
+                }
+
+                return new SmallInteger(n1.Value - n2.Value);
+            }
+        }
+
+        public class multiply : CoreCodeBlock
+        {
+            public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
+            {
+                if (parameters.Length != 1)
+                {
+                    throw new Exception("One parameter expected.");
+                }
+
+                SmallInteger n1 = (context as SmallObject).SendMessage(new SmallSymbol("#value")) as SmallInteger;
+                SmallInteger n2 = parameters[0] as SmallInteger;
+                if (n2 == null)
+                {
+                    throw new Exception("Integer parameter expected.");
+                }
+
+                return new SmallInteger(n1.Value * n2.Value);
+            }
+        }
+
+        public class divide : CoreCodeBlock
+        {
+            public override SmallObject Execute(ICodeContext context, params SmallObject[] parameters)
+            {
+                if (parameters.Length != 1)
+                {
+                    throw new Exception("One parameter expected.");
+                }
+
+                SmallInteger n1 = (context as SmallObject).SendMessage(new SmallSymbol("#value")) as SmallInteger;
+                SmallInteger n2 = parameters[0] as SmallInteger;
+                if (n2 == null)
+                {
+                    throw new Exception("Integer parameter expected.");
+                }
+
+                return new SmallInteger(n1.Value / n2.Value);
+            }
+        }
 
         #endregion
 
@@ -82,6 +162,10 @@ namespace IronSmalltalk
         {
             AttachSelector(new SmallSymbol("#value"), new value());
             AttachSelector(new SmallSymbol("#negated"), new negated());
+            AttachSelector(new SmallSymbol("#add:"), new add());
+            AttachSelector(new SmallSymbol("#subtract:"), new subtract());
+            AttachSelector(new SmallSymbol("#multiply:"), new multiply());
+            AttachSelector(new SmallSymbol("#divide:"), new divide());
         }
 
         protected override void Parse()

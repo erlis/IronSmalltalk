@@ -91,12 +91,30 @@ namespace IronSmalltalk
         }
 
         /// <summary>
-        /// Only sends unary messages right now.
+        /// Only sends binary messages.
         /// </summary>
         /// <param name="message"></param>
         public SmallObject SendMessage(SmallSymbol message)
         {
             return FindSelector(message).Execute(this);
+        }
+
+        /// <summary>
+        /// Sends unary and binary messages.
+        /// </summary>
+        /// <param name="message"></param>
+        public SmallObject SendMessage(SmallSymbol message, SmallObject parameter)
+        {
+            return FindSelector(message).Execute(this, parameter);
+        }
+
+        /// <summary>
+        /// Only sends unary and binary messages.
+        /// </summary>
+        /// <param name="message"></param>
+        public SmallObject SendMessage(SmallSymbol message, params SmallObject[] parameters)
+        {
+            return FindSelector(message).Execute(this, parameters);
         }
 
         #endregion
