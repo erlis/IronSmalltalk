@@ -166,6 +166,10 @@ namespace IronSmalltalk
             AttachSelector(new SmallSymbol("#subtract:"), new subtract());
             AttachSelector(new SmallSymbol("#multiply:"), new multiply());
             AttachSelector(new SmallSymbol("#divide:"), new divide());
+            AttachSelector(new SmallSymbol("#+"), new add());
+            AttachSelector(new SmallSymbol("#-"), new subtract());
+            AttachSelector(new SmallSymbol("#*"), new multiply());
+            AttachSelector(new SmallSymbol("#/"), new divide());
         }
 
         protected override void Parse()
