@@ -1,0 +1,45 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+        <style type="text/css">
+            BODY { font-family: Verdana; font-size: 12px; line-height: 20px; }
+        </style>
+	</head>
+	<body>
+	
+	    <p>
+            The <strong>IronSmalltalk.Tools.ClassLibraryBrowser.Definitions</strong> 
+            namespace contains classes representing the .Net model for the <strong><em>
+            Standard 
+            Smtalltalk Class Library</em></strong> described in the X3J20 documentation 
+            chapter 5. </p>
+        <p>
+            The <strong><em>Standard Class Library</em></strong> describes only the 
+            conceptual externaly visible behavior of the Smalltalk system in form of 
+            protocols. Therefore classes in the <strong>Definitions</strong> namespace only 
+            describe the protocols defined in the X3J20 document. </p>
+        <p>
+            The definition objects are derived from the X3J20 documentation and should 
+            therefore generally be treated as <strong><em>read-only</em></strong>. It is 
+            possible to edit them, but this should only be done to correct errors during 
+            conversion/entry from the X3J20 documentation. It is also possible (and 
+            encouradged) to create additional protocols.</p>
+        <p>
+            Exception to the <strong><em>read-only</em></strong> rule are method 
+            declarations. Those were extended with a source field, where a source code can 
+            be entered for later reuse when the protocols are to be implemented in concrete 
+            implementation.</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            Objects in the <strong>Definitions</strong> namespace can serialize to XML and 
+            materialize from XML. The XML is defined in the <strong>SystemDescription.xsd</strong> 
+            in the <strong>External</strong> folder. XML must adhere to the strict XSD 
+            specification. The <strong><em>root</em></strong> object is <strong>SystemDescription</strong>.</p>
+        <p>
+            The <strong>IronSmalltalk.Tools.ClassLibraryBrowser.RuntimeDefinitions</strong> 
+            namespace is where the concrete implementation is defined.</p>
+	
+	</body>
+</html>

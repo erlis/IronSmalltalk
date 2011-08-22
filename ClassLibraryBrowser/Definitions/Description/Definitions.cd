@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.Protocol">
+    <Position X="12" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAABAgAACEBgAAAAQAAAAAAAEAAAAAAQAAAAA=</HashCode>
+      <FileName>Definitions\Description\Protocol.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Messages" />
+      <Property Name="StandardGlobals" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.Message">
+    <Position X="6.5" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QIABAIAAAgAAAQDEAAAAEABIAgAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Definitions\Description\Message.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ReturnValue" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Parameters" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.Global">
+    <Position X="16" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAgCAAEAAAAAARAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Definitions\Description\Global.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Definition" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.Parameter">
+    <Position X="8" Y="3.5" Width="2" />
+    <NestedTypes>
+      <Enum Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.Parameter.AliasingEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Definitions\Parameter.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAUAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\Description\Parameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.Specification">
+    <Position X="6.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Definitions\Description\Specification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.ReturnValue">
+    <Position X="5" Y="3.5" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.ReturnValue.AliasingEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Definitions\ReturnValue.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\Description\ReturnValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.SystemDescription">
+    <Position X="11.75" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAFAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Definitions\Description\SystemDescription.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Protocols" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.GlobalDefinition" Collapsed="true">
+    <Position X="19.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Definitions\Description\GlobalDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.GlobalClass" Collapsed="true">
+    <Position X="19.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAIAAAAQAAAgAAAAAAAEAAQAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Definitions\Description\GlobalDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.GlobalVariable" Collapsed="true">
+    <Position X="21.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\Description\GlobalDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.GlobalConstant" Collapsed="true">
+    <Position X="23.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\Description\GlobalDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Tools.ClassLibraryBrowser.Definitions.Description.GlobalPool" Collapsed="true">
+    <Position X="26" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\Description\GlobalDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
