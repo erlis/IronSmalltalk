@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Runtime.Execution.CallSiteBinders.ConstantSendCallSiteBinder">
+    <Position X="8" Y="12.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\CallSiteBinders\ConstantSendCallSiteBinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Execution.CallSiteBinders.DoesNotUnderstandCallSiteBinder">
+    <Position X="16.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\CallSiteBinders\DoesNotUnderstandCallSiteBinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Execution.CallSiteBinders.MessageSendCallSiteBinder">
+    <Position X="8" Y="7.5" Width="2.25" />
+    <NestedTypes>
+      <Class Name="IronSmalltalk.Runtime.Execution.CallSiteBinders.MessageSendCallSiteBinder.MessageSendInvokeMemberBinder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Execution\CallSiteBinders\MessageSendCallSiteBinder.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAgAgAAAgIAAQQAAAAIAEAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\CallSiteBinders\MessageSendCallSiteBinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Execution.CallSiteBinders.MethodLookupHelper" Collapsed="true">
+    <Position X="20.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\CallSiteBinders\MethodLookupHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Execution.CallSiteBinders.ObjectClassCallSiteBinder">
+    <Position X="13.75" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\CallSiteBinders\ObjectClassCallSiteBinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Execution.CallSiteBinders.SuperSendCallSiteBinder">
+    <Position X="11" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\CallSiteBinders\SuperSendCallSiteBinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Dynamic.DynamicMetaObjectBinder" Collapsed="true">
+    <Position X="11.5" Y="0.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Dynamic.InvokeMemberBinder" Collapsed="true">
+    <Position X="5.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Execution.CallSiteBinders.SmalltalkDynamicMetaObjectBinder">
+    <Position X="12.25" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\CallSiteBinders\SmalltalkDynamicMetaObjectBinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Execution.CallSiteBinders.MessageSendCallSiteBinderBase">
+    <Position X="9.25" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\CallSiteBinders\MessageSendCallSiteBinderBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,110 @@
+﻿Smalltalk interchangeVersion: '1.0'!
+
+Global variable: 'User'
+!
+
+Global constant: 'Todor'!
+
+
+Class named: 'Person'
+	superclass: 'Object'
+	indexedInstanceVariables: #'none'
+	instanceVariableNames: 'firstName "why? " lastName '
+	classVariableNames: 'AllPersons'
+	sharedPools: ''
+	classInstanceVariableNames:'personType'!
+
+Class named: 'Object'
+	superclass: 'nil'
+	indexedInstanceVariables: #'none'
+	instanceVariableNames: ''
+	classVariableNames: ''
+	sharedPools: 'GlobalPool'
+	classInstanceVariableNames:''!
+
+Class named: 'String'
+	superclass: 'Object'
+	indexedInstanceVariables: #'none'
+	instanceVariableNames: ''
+	classVariableNames: ''
+	sharedPools: 'GlobalPool'
+	classInstanceVariableNames:''!
+
+Class named: 'Integer'
+	superclass: 'Object'
+	indexedInstanceVariables: #'none'
+	instanceVariableNames: ''
+	classVariableNames: ''
+	sharedPools: ''
+	classInstanceVariableNames:''!
+
+Object method!
+
+asString 
+	^'an Object'.!
+
+Object clasMethod!
+
+new
+	^self.!
+
+String method!
+
+asString 
+	^self.!
+
+String method!
+
+size 
+	^1.!
+
+String classMethod!
+
+crLf
+	^CrLf!
+
+Integer method!
+
++ aNumber
+	^123!
+
+Integer method!
+
+asString
+	^'123'.!
+
+Class named: 'TranscriptWindow'
+	superclass: 'Object'
+	indexedInstanceVariables: #'none'
+	instanceVariableNames: ''
+	classVariableNames: ''
+	sharedPools: ''
+	classInstanceVariableNames:''!
+
+TranscriptWindow method!
+
+show: aString 
+	^self.!
+
+
+Global constant: 'Transcript'!
+
+Transcript initializer!
+
+TranscriptWindow new.!
+
+Pool named: 'GlobalPool'!
+
+GlobalPool variable: 'CrLf'!
+
+GlobalPool initializerFor: 'CrLf'!
+
+13 asString, 
+10 asString " Yeah!!!!".
+!
+
+User initializer!
+
+
+123 + '!!' size!
+

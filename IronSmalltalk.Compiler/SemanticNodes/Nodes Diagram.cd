@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.ExpressionNode" Collapsed="true">
+    <Position X="9.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Compiler\ExpressionNodes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.AssignmentNode">
+    <Position X="10.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAQAAAAAAABAAA=</HashCode>
+      <FileName>Compiler\ExpressionNodes.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Expression" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.BasicExpressionNode">
+    <Position X="7.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAEAAAAAAAAAAABAAQCAAAA=</HashCode>
+      <FileName>Compiler\ExpressionNodes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.StatementNode">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAQAAAAAAAAAAI=</HashCode>
+      <FileName>Compiler\ParseNodes.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Expression" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.StatementSequenceNode">
+    <Position X="5" Y="4" Width="2" />
+    <AssociationLine Name="NextStatement" Type="IronSmalltalk.Compiler.SemanticNodes.StatementNode" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.625" Y="4" />
+        <Point X="6.625" Y="2.574" />
+        <Point X="5" Y="2.574" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="NextStatement" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.ReturnStatementNode">
+    <Position X="2" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Compiler\ParseNodes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

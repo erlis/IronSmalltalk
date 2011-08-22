@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Runtime.Behavior.CompiledMethod" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAQAAAAAgAAAAQAACAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Behavior\CompiledMethod.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Code" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Behavior.IntermediateCodeBase" Collapsed="true">
+    <Position X="8.25" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Behavior\IntermediateCodeBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Behavior.IntermediateInitializerCode">
+    <Position X="9.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAACgACAAAAAAAAAAAAAAAAAAAAAAAACAAEAAABE=</HashCode>
+      <FileName>Behavior\IntermediateInitializerCode.cs</FileName>
+      <NewMemberFileName>Behavior\IntermediateCodeBase.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Behavior.IntermediateMethodCode">
+    <Position X="6.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAQAAAAAAAAQAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Behavior\IntermediateMethodCode.cs</FileName>
+      <NewMemberFileName>Behavior\IntermediateCodeBase.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Behavior.MethodDictionary" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBsAEAAAQgAGDhobCQAABAQAAMAAAgEmCAMoaRXUb2A=</HashCode>
+      <FileName>Behavior\MethodDictionary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Behavior.ClassMethodDictionary" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Behavior\MethodDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Behavior.InstanceMethodDictionary" Collapsed="true">
+    <Position X="6.75" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Behavior\MethodDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IronSmalltalk.Runtime.Behavior.IIntermediateCodeValidationErrorSink" Collapsed="true">
+    <Position X="12.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Behavior\IntermediateCodeBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

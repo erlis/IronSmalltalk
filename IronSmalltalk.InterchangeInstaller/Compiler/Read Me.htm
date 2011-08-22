@@ -1,0 +1,60 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Compiler Read-Me</title>
+        <style type="text/css">
+        BODY
+        {
+            font-family: Verdana;
+            font-size: 12px;
+        }
+            .style1
+            {
+                text-decoration: underline;
+            }
+            </style>
+	</head>
+	<body>
+	
+	    <h1>
+            IronSmalltalk Interchange Services</h1>
+        <p>
+            This namespace contains classes that contain the business logic described in 
+            X3J20 chapter <em>4. Smalltalk Interchange Format</em>.</p>
+        <p>
+            The services in this namespace contain the functionality to process (and
+            <span class="style1">file-in</span>) Smalltak Interchange File (normally known 
+            as .st files). </p>
+        <p>
+            The main component is the <strong>InterchangeFormatProcessor</strong>, which 
+            processes a single source file according to the X3J20 definitions. It determines 
+            from the source file the version of the interchange file. It uses the given
+            <span class="style1">map</span> to determine which <strong>
+            InterchangeVersionService</strong> to use to process this file. The 
+            InterchangeVersionService is the object that knows how to interpret the contents 
+            of the source file. Currently only <strong>InterchangeVersionService10</strong> 
+            is implemented, since we only support pure X3J20 definitions. IronSmalltalk may 
+            implement an extended service. </p>
+        <p>
+            The InterchangeFormatProcessor converts the source code to parse nodes, which 
+            create <span class="style1">definition objects</span> for the corresponding 
+            source code. The definition objects inherit from <strong>
+            IronSmalltalk.Runtime.Installer.Definitions.DefinitionBase</strong> and 
+            contain the information found in the source code. It is however possible to 
+            create those entirely from code without having source file.</p>
+        <p>
+            The InterchangeFormatProcessor notifies an <strong>IInterchangeFileInProcessor
+            </strong>for each element that it reads from the source file giving it the 
+            corresponding definition object. It is up to the IInterchangeFileInProcessor to 
+            evaluate it immediately or deffer the processing for later or perform 
+            transactional processing.</p>
+        <p>
+            Note: To sum things up; classes here don&#39;t exactly know what to do with the code 
+            that is being filed-in. They pass the information to the 
+            IInterchangeFileInProcessor and let it do the work.</p>
+        <p>
+            See also the <strong>Read Me.htm</strong> in the <strong>Compiler</strong> 
+            folder.</p>
+        	
+	</body>
+</html>

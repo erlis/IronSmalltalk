@@ -1,0 +1,258 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Compiler Read-Me</title>
+        <style type="text/css">
+        BODY
+        {
+            font-family: Verdana;
+            font-size: 12px;
+        }
+            .style1
+            {
+                text-decoration: underline;
+            }
+        </style>
+	</head>
+	<body>
+	
+	    <h1>
+            IronSmalltalk Compiler Services</h1>
+        <p>
+            This is a brief description of the compiler services.</p>
+        <p>
+            The compiler and related components are divided into 
+            several sub-categories. Those are based on the X3J20 document structure, but do 
+            not adhere to it 100%. </p>
+        <ol>
+            <li>Scanner</li>
+            <li>Parser</li>
+            <li>Interchange Processor</li>
+            <li>Installer</li>
+            <li>Encoder</li>
+        </ol>
+        <blockquote>
+            The scanner (or lexer) is documented primarily in X3J20 chapter <em>3.5 Lexical 
+            Grammar</em>. See <em>Lexical Grammer </em>section below.</blockquote>
+        <blockquote>
+            The parser is divided in two, the standard parser that can parse methods and 
+            initializers, as described in X3J20 <em>3.4 Method Grammar</em> and interchange 
+            format parser used by the interchange format processor. See <em>Method Grammer</em>
+            section below.</blockquote>
+        <blockquote>
+            The interchange format is the file format chosen for IronSmalltalk source code 
+            files. The interchange format processor is responsible for reading those files. 
+            Instead of using classical Smalltalk approach of evaluating chunks, we&#39;ve 
+            implemented a special parser that has hardcoded knowledge of the format. 
+            Description of the format is found in X3J20 <em>4. Smalltalk Interchange Format</em>. 
+            The interchange processor uses the<em> interchange format parser</em> to create 
+            interchange parse nodes. Those nodes are converted into <em>definitions</em> and 
+            added to the <em>installer</em>. The interchange format processor does not 
+            modify the Smalltalk environment - the installer does that.</blockquote>
+        <blockquote>
+            The <em>installer</em> accepts definitions from the interchange processor and 
+            installs them into <em>Smalltalk environment</em> (the image). It does this in 
+            several steps while doing validation. The rules are described in X3J20 3.3 
+            Smalltalk Abstract Program Grammar, 3.4 Method Grammar and to small extent in 4. 
+            Smalltalk Interchange Format. The installer is not technically part of the 
+            compiler services, but is part of the <em>runtime services</em>. It is 
+            teoretically possible to create Smalltalk application programatically by code 
+            instead of reading source files. See <em>Abstract Program Grammer</em> section 
+            below as well as separate read me file in the Runtime folder.</blockquote>
+        <blockquote>
+            The <em>encoder</em> is not required nor described in X3J20. It&#39;s entirely 
+            IronSmalltalk implementation specific component. It is responsible for 
+            converting the parse trees to <em>compiled methods / initializers</em> and into 
+            DLR specific expression trees.</blockquote>
+        <p>
+            The compiler service is implemented to adhere strictly to the X3J20 
+            specifications. If it deviates, unless documented thoroughly, it is to be 
+            <span class="style1">considered a bugnsidered a bug</span>.</p>
+        <p>
+            The compiler services are to be
+            <span class="style1">tolerant to source code errors</span>. They should try 
+            to recover (but not automatically fix) mal-formatted source code. This is 
+            necessary if we in the future will use the same services in a development 
+            environment to process unfinished source code, i.e. to dynamically parse code as 
+            the user types it.</p>
+        <p>
+            Compiler services are <span class="style1">not allowed to throw exception</span> due to inconsistencies or 
+            mal-formatted source code. They should use an error-sink to report errors to 
+            their client. If possible, errors should be descriptive, including the source 
+            location that we responsible for the issue and optionally a suggestion on how to 
+            fix that. It is however OK to throw exceptions due to internal inconsistencies, 
+            i.e. due to a bug in the C# implementation.</p>
+        <p>
+            The compiler services are written in C#. Those make up what we call the 
+            <em>bootstrap compiler</em>, which is the default compiler service. This compiler is 
+            responsible for reading the IronSmalltalk <em>base class library</em>. Once enough of the 
+            base class library is processed, the implementation may give control and 
+            continue processing source code using a compiler service implemented in 
+            Smalltalk. This feature will be deferred to version 1.x.</p>
+        <p>
+            Compiler services do not directly access Smalltalk elements. They communicate to 
+            the <em>Smalltalk environment </em>(the Smalltalk <em>image</em> in a legacy implementation) via a 
+            <em>Smalltalk Environment Service</em>. The Environment Service is 
+            <span class="style1">responsible for 
+            manipulating the state of the environment</span>, e.g. creating classes, defining 
+            globals, initializing etc. This decouples implementation and lets us change 
+            implementation specific features if we choose to.</p>
+        <p>
+            We strive to avoid hardcoding constants inside the business logic source code. 
+            If possible, we&#39;ll define a class containing error message string constants and 
+            a class containing grammatical string constants.</p>
+        <h2>
+            Abstract Program Grammar</h2>
+        <p>
+            The Abstract Program Grammar is described in X3J20 section &quot;3.3 Smalltalk 
+            Abstract Program Grammar&quot;. It is open to interpretation, but X3J20 includes the 
+            &quot;4. Smalltalk Interchange Format&quot;, that is a possible concrete implementation of 
+            the program grammar. We&#39;ve chosen to implement the <em>interchange format</em> as our 
+            program grammar. </p>
+        <p>
+            To accommodate integration with the .Net framework, the grammar may be extended 
+            to implement features to allow easy integration with the framework. However, 
+            this will require the <em>interchange files</em> to <span class="style1">contain specific
+            <em>interchange version</em></span>. 
+            For the purpose, we&#39;ve <span class="style1">defined interchange version 
+            <strong>&quot;IronSmalltalk 1.0&quot;</strong></span>. Using 
+            this interchange version tells the compiler services to accept the grammar 
+            extensions introduced by IronSmalltalk. In the future, we&#39;d like to make it 
+            possible for 3rd parties to implement their own interchange version and extend 
+            the compiler services.</p>
+        <p>
+            The program grammar is mostly implemented in the 
+            <strong>IronSmalltalk.Compiler.Interchange</strong> namespace. The portions of it which deal 
+            with manipulating the Smalltalk environment are implemented in the 
+            <strong>IronSmalltalk.Runtime.SmalltalkEnvironmentService</strong>. </p>
+        <p>
+            The interchange format specification is finite and relatively small. We&#39;ve 
+            decided instead of using the traditional technique of evaluating <em>chunks</em> of 
+            file-in code to hardcode all parts of the interchange format in C# classes. This 
+            is needed anyway to be <span class="style1">able to <em>bootstrap</em> the Smalltalk environment</span>.</p>
+        <p>
+            The elements described in X3J20 &quot;4. Smalltalk Interchange Format&quot; are modelled in 
+            the <strong>IronSmalltalk.Compiler.Interchange.ParseNodes</strong> namespace as 
+            subclasses of the <strong>InterchangeParseNode</strong> base class. Each node instance that is 
+            subclass of the <strong>InterchangeUnitNode</strong> can be <span class="style1">asked to
+            <strong>Evaluate</strong> itself</span>. That is 
+            analogues to evaluating a chunk of file-in code in traditional implementation. 
+            When evaluated, the node will manipulate the Smalltalk environment and if 
+            necessary read and process (file-in) more source code.</p>
+        <p>
+            Processing an interchange format file is done by an <strong>InterchangeFormatProcessor</strong> 
+            instance. The InterchangeFormatProcessor is responsible for <span class="style1">reading the given 
+            source code, splitting it into chunks and processing each chunk</span>. The processor 
+            has a/is the context and <span class="style1">knows about the Smalltalk environment</span> it belongs to and 
+            is working on.</p>
+        <p>
+            The InterchangeFormatProcessor delegates the parsing work to a 
+            <strong>InterchangeFormatParser</strong> instance. The interchange parser is a specialized 
+            (hard-coded) parser that <span class="style1">knows exactly how to parse the interchange format</span>. It 
+            generates the interchange nodes mentioned earlier.</p>
+        <p>
+            Substantial part of the implementation of the program grammar is in the 
+            Smalltalk environment service. That service is responsible for manipulating the 
+            environment. It is documented in a separate file.</p>
+        <p>
+            See: IronSmalltalk.Compiler.Interchange and 
+            IronSmalltalk.Compiler.Interchange.ParseNodes namespaces and 
+            IronSmalltalk.Runtime.SmalltalkEnvironmentService class.</p>
+        <h2>
+            Method Grammar</h2>
+        <p>
+The method grammar is described in X3J20 &quot;3.4 Method Grammar&quot;. It is implemented 
+            in the <strong>IronSmalltalk.Compiler.SemanticAnalysis</strong> and 
+            <strong>IronSmalltalk.Compiler.SemanticNodes</strong> namespaces.</p>
+        <p>
+            The main component is the <em>Parser</em>, which is implemented in the 
+            <strong>IronSmalltalk.Compiler.SemanticAnalysis.Parser</strong> class. It 
+            <span class="style1">contains 
+            almost all of the logic</span> described in the X3J20 &quot;3.4 Method Grammar&quot;. The 
+            parser&#39;s main function is to <span class="style1">parse method definitions and initializers</span>.</p>
+        <p>
+            The <span class="style1">parser produces an AST (Abstract Syntax Tree) of parse nodes</span>. Those are 
+            defined in the <strong>IronSmalltalk.Compiler.SemanticNodes</strong> namespace. In 
+            general, each node class represents an element described in the X3J20 chapter. </p>
+        <p>
+            ISSUE: How do the AST convert to source code?o source code?</p>
+        <p>
+            See: IronSmalltalk.Compiler.SemanticAnalysis and 
+            IronSmalltalk.Compiler.SemanticNodes namespaces.</p>
+        <h2>
+            Lexical Grammar</h2>
+        <p>The lexical grammar is described in X3J20 &quot;3.5 Lexical Grammar&quot;. The logic is 
+            mainly implemented in the <strong>IronSmalltalk.Compiler.LexicalAnalysis</strong> and 
+            <strong>IronSmalltalk.Compiler.LexicalTokens</strong> namespaces.</p>
+        <p>
+            The main component is the <em>Scanner (or Lexer)</em>. It is implemented in the 
+            <strong>IronSmalltalk.Compiler.LexicalAnalysis.Scanner</strong> class. It is responsible 
+            for <span class="style1">creating tokens out of the given source code</span>. The main method is 
+            <strong>GetToken</strong> 
+            which <span class="style1">returns the next token</span>.</p>
+        <p>
+            When the scanner reaches the <span class="style1">end of the source code it returns an 
+            <strong>EofToken</strong></span>. If 
+            the client insists on getting more tokens, it returns <strong>null</strong>, i.e. EofToken is 
+            returned never more than once. This ensures that if the client is in some sort 
+            of loop and doesn&#39;t recognize EofToken correctly, it will exit gently or just 
+            crash instead of getting stuck in an infinite loop.</p>
+        <p>
+            The <strong>GetMethod</strong> token has a <em>preference</em> argument that tells the scanner, 
+            <span class="style1">in case of 
+            ambiguity, what token the client (the parser) would prefer</span>. Example is &quot;|&quot; 
+            (vertical bar), which can either be a binary selector or a special character 
+            used for defining temporaries or inside blocks.</p>
+        <p>
+            Tokens are defined in <strong>IronSmalltalk.Compiler.LexicalTokens</strong> namespace 
+            and model the descriptions in the X3J20 chapter. Some tokens are extension to 
+            the X3J20 specification, primarily the <strong>SpecialCharacter</strong> token that is often used 
+            for method grammar constants.</p>
+        <p>
+            Some inconsistencies exist between current implementations (VSE, Squeak and may 
+            be VW) and the X3J20 standard. Namely X3J20 says:</p>
+        <ol>
+            <li>
+                <blockquote>
+                    <em>Each token is to be recognized as the <span class="style1">longest string of 
+                    characters that is syntactically valid</span>, except where otherwise specified.</em></blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <em>Unless otherwise specified, <span class="style1">white space or another 
+                    separator must appear between any two tokens</span> if the initial characters of 
+                    the second token would be a valid extension of the first token. </em>
+                </blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <em><span class="style1">White space is not allowed within a token</span> unless 
+                    explicitly specified as being allowed.</em></blockquote>
+            </li>
+        </ol>
+        <p>
+            I&#39;ve identified two issues that deviate from some existing implementations:</p>
+        <ul>
+            <li>Existing parsers give the negative sign special precedence. Example: <strong>123 
+                -- 3</strong> is evaluated as <strong>123 - (-3)</strong>. If I read rule 1 and 
+                rule 2 correctly, the lexer must read the <strong>&quot;--&quot;</strong> as a single 
+                token (i.e. a binary <strong>#--</strong>) instead of breaking it into two tokens. We 
+                will comply with X3J20.</li>
+            <li>Whitespace inside <em>quoted selectors</em> is accepted by those 
+                implementations, but <span class="style1">disallowed by X3J20</span> (rule 3). 
+                Example: <strong>#&nbsp;&nbsp; yourself</strong> is the same as <strong>
+                #yourself</strong>. We will comply with X3J20 and disallow this. </li>
+        </ul>
+        <p>
+            The adherence to the X3J20 standard might create some headaches if people try to 
+            migrate code from an existing implementation. They must re-write their code, 
+            sorry! Future versions might implement lexer/parser that handles this 
+            differently, but the will also require an extension to the interchange format by 
+            defining a new implementation specific version. In other words, we will not bend 
+            X3J20 to introduce compatibility with legacy code.</p>
+        <p>
+            See: IronSmalltalk.Compiler.LexicalAnalysis and 
+            IronSmalltalk.Compiler.LexicalTokens namespaces.</p>
+        	
+	</body>
+</html>

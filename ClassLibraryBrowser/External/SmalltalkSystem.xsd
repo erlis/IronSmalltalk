@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SmalltalkSystem"
+    targetNamespace="http://schemas.ironsmalltalk.org/version1.0/Tools/SmalltalkSystem.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://schemas.ironsmalltalk.org/version1.0/Tools/SmalltalkSystem.xsd"
+    xmlns:ss="http://schemas.ironsmalltalk.org/version1.0/Tools/SmalltalkSystem.xsd"
+    xmlns:sd="http://schemas.ironsmalltalk.org/version1.0/Tools/SystemDescription.xsd"
+    xmlns:si="http://schemas.ironsmalltalk.org/version1.0/Tools/SystemImplementation.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:import namespace="http://schemas.ironsmalltalk.org/version1.0/Tools/SystemDescription.xsd" schemaLocation="SystemDescription.xsd" />
+  <xs:import namespace="http://schemas.ironsmalltalk.org/version1.0/Tools/SystemImplementation.xsd" schemaLocation="SystemImplementation.xsd" />
+  <xs:element name="SmalltalkSystem">
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="1">
+        <xs:element ref="sd:SystemDescription" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="si:SystemImplementation" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Runtime.SmalltalkClass" Collapsed="true">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARQACAEABAAgAAAECQAACAUAAQAAAAAGQAJEAAAAAig=</HashCode>
+      <FileName>SmalltalkClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Execution.Dynamic.SmalltalkDynamicMetaObject" Collapsed="true">
+    <Position X="4.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAQBAAAAAACAAAIABAAAAAABAAQAAEAAARAAAAA=</HashCode>
+      <FileName>Execution\Dynamic\SmalltalkDynamicMetaObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.SmalltalkObject" Collapsed="true">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAIAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\Dynamic\SmalltalkObjectDynamicMetaObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IronSmalltalk.SmalltalkRuntime" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAIEIBAAAAAACACAACAACAACAAAGQCAQCAAA=</HashCode>
+      <FileName>SmalltalkRuntime.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="3.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Dynamic.DynamicMetaObject" Collapsed="true">
+    <Position X="5" Y="3.75" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="IronSmalltalk.Runtime.Execution.Dynamic.ISmalltalkDynamicMetaObjectProvider" Collapsed="true">
+    <Position X="0.75" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Execution\Dynamic\SmalltalkDynamicMetaObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="System.Dynamic.IDynamicMetaObjectProvider" Collapsed="true">
+    <Position X="1" Y="3.75" Width="2.25" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

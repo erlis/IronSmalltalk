@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SolutionDir)\Common.proj" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C1EF7F5-B3AF-401B-9223-E10EF00EBAE6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IronSmalltalk.Compiler</RootNamespace>
+    <AssemblyName>IronSmalltalk.Compiler</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SilverlightDebug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SilverlightDebug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\IronSmalltalk.Compiler.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SilverlightRelease|AnyCPU'">
+    <OutputPath>bin\SilverlightRelease\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\IronSmalltalk.Compiler.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(SilverlightBuild)' != 'true' ">
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(SilverlightBuild)' == 'true' ">
+    <Reference Include="mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SilverlightPath)\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SilverlightPath)\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SilverlightPath)\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SilverlightSdkPath)\System.Numerics.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConversionUtilities.cs" />
+    <Compile Include="LexicalAnalysis\InvalidScannerOperationException.cs" />
+    <Compile Include="LexicalAnalysis\IScanErrorSink.cs" />
+    <Compile Include="LexicalAnalysis\LexicalConstants.cs" />
+    <Compile Include="LexicalAnalysis\LexicalErrors.cs" />
+    <Compile Include="LexicalAnalysis\Scanner.cs" />
+    <Compile Include="LexicalAnalysis\ScanResult.cs" />
+    <Compile Include="LexicalAnalysis\ScanResultHelper.cs" />
+    <Compile Include="LexicalTokens\3.5.1 Characters.cs" />
+    <Compile Include="LexicalTokens\3.5.10 Quoted Selector.cs" />
+    <Compile Include="LexicalTokens\3.5.2 Comments.cs" />
+    <Compile Include="LexicalTokens\3.5.3 Identifiers.cs" />
+    <Compile Include="LexicalTokens\3.5.4 Keywords.cs" />
+    <Compile Include="LexicalTokens\3.5.5 Operators.cs" />
+    <Compile Include="LexicalTokens\3.5.6 Numbers.cs" />
+    <Compile Include="LexicalTokens\3.5.7 Quoted Character.cs" />
+    <Compile Include="LexicalTokens\3.5.8 Quoted String.cs" />
+    <Compile Include="LexicalTokens\3.5.9 Hashed String.cs" />
+    <Compile Include="LexicalTokens\IToken.cs" />
+    <Compile Include="LexicalTokens\LiteralTokens.cs" />
+    <Compile Include="LexicalTokens\SpecialCharacters.cs" />
+    <Compile Include="LexicalTokens\TokenInterfaces.cs" />
+    <Compile Include="LexicalTokens\Tokens.cs" />
+    <Compile Include="LexicalTokens\UnquotedSelectorToken.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SemanticAnalysis\InvalidParserOperationException.cs" />
+    <Compile Include="SemanticAnalysis\IParseErrorSink.cs" />
+    <Compile Include="SemanticAnalysis\Parser.cs" />
+    <Compile Include="SemanticAnalysis\ParserBase.cs" />
+    <Compile Include="SemanticAnalysis\ParserHelper.cs" />
+    <Compile Include="SemanticAnalysis\SemanticConstants.cs" />
+    <Compile Include="SemanticAnalysis\SemanticErrors.cs" />
+    <Compile Include="SemanticNodes\3.4.1 Functions.cs" />
+    <Compile Include="SemanticNodes\3.4.2 Methods.cs" />
+    <Compile Include="SemanticNodes\3.4.3 Initializers.cs" />
+    <Compile Include="SemanticNodes\3.4.4 Blocks.cs" />
+    <Compile Include="SemanticNodes\3.4.5 Statements.cs" />
+    <Compile Include="SemanticNodes\3.4.5.1 Return Statement.cs" />
+    <Compile Include="SemanticNodes\3.4.5.2 Expressions.cs" />
+    <Compile Include="SemanticNodes\3.4.5.3 Message Arguments.cs" />
+    <Compile Include="SemanticNodes\3.4.5.3 Message Sequences.cs" />
+    <Compile Include="SemanticNodes\3.4.5.3 Messages.cs" />
+    <Compile Include="SemanticNodes\3.4.5.3.3 Cascades.cs" />
+    <Compile Include="SemanticNodes\3.4.6 Literals.cs" />
+    <Compile Include="SemanticNodes\3.4.6.1 Numeric Literals.cs" />
+    <Compile Include="SemanticNodes\3.4.6.2 Character Literals.cs" />
+    <Compile Include="SemanticNodes\3.4.6.3 String Literals.cs" />
+    <Compile Include="SemanticNodes\3.4.6.4 Symbol Literals.cs" />
+    <Compile Include="SemanticNodes\3.4.6.5 Selector Literals.cs" />
+    <Compile Include="SemanticNodes\3.4.6.6 Array Literals.cs" />
+    <Compile Include="SemanticNodes\IParseNode.cs" />
+    <Compile Include="SemanticNodes\ParseNode.cs" />
+    <Compile Include="SemanticNodes\PrimitiveCallNode.cs" />
+    <Compile Include="SemanticNodes\VariableNode.cs" />
+    <Compile Include="Visiting\IParseTreeVisitor.cs" />
+    <Compile Include="Visiting\ParseTreeValidatingVisitor.cs" />
+    <Compile Include="Visiting\ParseTreeVisitor.cs" />
+    <Compile Include="Visiting\ParseTreeVisitorDispatching.cs" />
+    <Compile Include="Visiting\UnimplementedParseTreeVisitor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LexicalAnalysis\Read Me.htm" />
+    <None Include="LexicalTokens\Tokens Diagram.cd" />
+    <None Include="SemanticNodes\3.4.1 Function Nodes Diagram.cd" />
+    <None Include="SemanticNodes\3.4.5 Statements Diagram.cd" />
+    <None Include="SemanticNodes\3.4.5.2 Expression Nodes Diagram.cd" />
+    <None Include="SemanticNodes\3.4.5.3 Message Nodes Diagram.cd" />
+    <None Include="SemanticNodes\3.4.6 Literals Diagram.cd" />
+    <None Include="SemanticNodes\ClassDiagram1.cd" />
+    <None Include="SemanticNodes\ClassDiagram2.cd" />
+    <None Include="SemanticNodes\Nodes Diagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LexicalTokens\Read Me.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SemanticAnalysis\Read Me.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SemanticNodes\Read Me.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IronSmalltalk.Common\IronSmalltalk.Common.csproj">
+      <Project>{CBBBA006-546A-4DFF-95A9-D7B1544205AD}</Project>
+      <Name>IronSmalltalk.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Read Me.htm" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

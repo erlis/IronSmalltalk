@@ -1,0 +1,235 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Compiler Read-Me</title>
+        <style type="text/css">
+        BODY
+        {
+            font-family: Verdana;
+            font-size: 12px;
+        }
+            .style1
+            {
+                text-decoration: underline;
+            }
+            </style>
+	</head>
+	<body>
+	
+	    <h1>
+            Discrete Bindings 
+            Implementation Notes</h1>
+        <p>
+            The X3J20 standard requires quite flexible and dynamic discrete variable 
+            bindings, expecially when it comes to global variables. This documents some of 
+            the aspects and workings of discrete bindings.</p>
+        <h2>
+            Global Bindings</h2>
+        <p>
+            Those are probably the worst. X3J20 mandates few 
+            things:</p>
+        <ol>
+            <li>
+                <blockquote>
+                    <em>A &lt;&lt;program element&gt;&gt; may reference any global name regardless of whether the 
+            definition of the global name <span class="style1">proceeds or follows</span> the &lt;&lt;program
+element&gt;&gt;.</em></blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <em>It is <span class="style1">erroneous</span> if two or more &lt;&lt;program 
+                    element&gt;&gt; definitions <span class="style1">use the same identifier</span> as a 
+                    global name.</em></blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <em>A reference to a name at some point in a program definition is resolved to 
+                    the specific binding of the name that exists in the scope that is available at 
+                    that point.</em></blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <em>The binding of a name within a scope may be specified as an error binding. 
+                    Any reference to a name which resolves to an error binding is erroneous.</em></blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <em>A name scope may be defined as a composition of other, already defined, name 
+                    scopes. ... If a binding for the same name appears in both the inner scope and 
+                    the outer scope, the inner scope binding is said to <span class="style1">shadow the outer scope 
+                    binding</span>. It is the inner scope binding that is available as part of the 
+                    composite scope.</em></blockquote>
+            </li>
+            <li>
+                <blockquote>
+                    <em>A &lt;&lt;Smalltalk program&gt;&gt; introduces a name scope, called the 
+                    <span class="style1">global scope</span>, 
+                    that is available to all parts of the program. The &lt;&lt;program element&gt;&gt; clause of 
+                    a &lt;&lt;Smalltalk program&gt;&gt; logically includes the definitions of any standard or 
+                    implementation program elements used by the program. </em>
+                </blockquote>
+            </li>
+        </ol>
+        <p>
+            Especial headache for us is requirement 1. and 6. I read X3J20 the following 
+            way:</p>
+        <ul>
+            <li>Requirement 1. says that code can reference a global that&#39;s not declared yet.</li>
+            <li>Requirement 2. says that code cannot declare a global more than once.</li>
+            <li>Requirement 5. says that code can redefine a variable defines in an outer scope.</li>
+            <li>Requirement 6. says that code can use globals defines by the code itself and 
+                globals defined by IronSmalltalk.</li>
+            <li>Requirement 5. combined with 6. says that code can redefine a global defined by 
+                IronSmalltalk.</li>
+            <li>It&#39;s unclear to me how to read requirement 3.</li>
+        </ul>
+        <p>
+            X3J20 says:</p>
+        <blockquote>
+            <em>Immediately prior to the execution of a Smalltalk program all statically 
+            created objects are in their initial state as defined by the Smalltalk program 
+            and the values of all discrete variables are undefined. Execution proceeds by 
+            sequentially executing each initializer in the order specified by the program 
+            definition. If a program accesses any variable that has not been explicitly 
+            initialized either by an initializer or by an assignment statement its value 
+            will be the object named nil.</em></blockquote>
+        <p>
+            I read this as:</p>
+        <ul>
+            <li>Define all classes, globals etc. defined in the source code.</li>
+            <li>Execute all initializers defined in the source code, in the order specified 
+                order.</li>
+            <li>In other words, definitions and initializers may be mixed inside the source 
+                code, but execution of initializers is deferred until all definitions are 
+                processed.</li>
+        </ul>
+        <p>
+            X3J20 says:</p>
+        <blockquote>
+            <em>A complete program is treated as a concatenation of the interchange files 
+            from which it is composed. Any names or objects that are predefined by an 
+            implementation are treated as if their definitions preceded the first file in 
+            this concatenation.</em></blockquote>
+        <p>
+            I interpret this as:</p>
+        <ul>
+            <li>First do standard IronSmalltalk initialization (this same as for user program).</li>
+            <li>Process each source code file.</li>
+            <li>Execute definitions immediately but defer initialization for later.</li>
+            <li>When all files are processed, execute the deferred initializers.</li>
+            <li>X3J20 does not mention how the <em>Program Initializer</em> is to be handled. To 
+                keep things simple and follow Smalltalk tradition, we <span class="style1">will 
+                not give</span> it special preference and execute it together with the other 
+                initializers, i.e. in the order it appears in the source code file.</li>
+            <li>X3J20 is unclear if a global may have more than one initializer. To keep things 
+                simple and readable, we will only allow one initializer and fail if the code 
+                contains a second initializer for the same global. Same is true for the <em>Program Initializer</em>.</li>
+        </ul>
+        <h3>
+            Defining and Referencing a Global Binding</h3>
+        <p>
+            Obviously, this is the part where we process &lt;&lt;program element&gt;&gt; definitions, 
+            but for now ignoring the initializers they may contain. Two scenarios exist:</p>
+        <ol style="list-style-type: lower-alpha">
+            <li>A definition references a global that&#39;s already defined. This is the classical C 
+                style, forward-only way of doing things. </li>
+            <li>A definition references a global name that follows the definition, i.e. it will 
+                be defined later. This is the case we will concentrate on.</li>
+        </ol>
+        <p>
+            One might think that a. is a simple case, but in fact, X3J20 says that variables 
+            are resolved from the following composite scope:
+            <br /><strong>((global scope + pool variable scope) + class variable scope) + class instance / instance variable scope</strong></p>
+        <p>
+            That puts us in a situation where a method may reference to variable <em>X</em> 
+            that&#39;s defined in the <em>global scope</em>, e.g. a class, but later in the code 
+            a pool variable may be defined, which appears in the <em>pool variable scope</em> 
+            and thus shadows the global variable. Therefore, even if we can resolve the 
+            binding at the time we encounter it in the source code, we can&#39;t be sure it 
+            resolves correctly. The only options we have is to defer this process until all 
+            definitions are filed-in. Every binding (except arguments and temporaries) are 
+            handled as case b.</p>
+        <p>
+            We don&#39;t know how we&#39;ll end resolving the bindings. 
+            What we do is:</p>
+        <ol>
+            <li>Create an <em>unresolved binding</em> that we will later resolve to a concrete 
+                binding.</li>
+            <li>Set attributes on the temporary binding depending on the constraints that may be 
+                placed on it.</li>
+            <ol style="list-style-type: lower-alpha;">
+                <li>Source code position, so we can complain and display errors if needed.</li>
+                <li>May be other attributes ... if needed.</li>
+                <li>Side note: The <em>outer scope</em> may<span class="style1"> reject shadowing</span> 
+                    (redefining) of a global in the <em>inner scope</em>. The purpose is to
+                    <span class="style1">prohibit shadowing</span> of certain <em>important globals</em>, 
+                    such as Object, True, False etc. to avoid having exceptionally complex system.</li>
+            </ol>
+            <li>Create an unresolved binding instance each time a binding is needed. Have the 
+                binding know where it&#39;s used and how to replace itself with a concrete binding, 
+                i.e. have a delegate we can call.</li>
+            <li>Keep a list of the&nbsp;unresolve bindings as long as we are reading the 
+                definitions.</li>
+            <li>When definition phase has finished, but before running the initializers, process 
+                the list of temporary bindings.</li>
+            <ol style="list-style-type: lower-alpha;">
+                <li>Try to resolve each temporary binding to a concrete binding.</li>
+                <li>If succeeded, run the <em>&quot;replace myself&quot;</em> delegate on the binding, so it 
+                    will replace itself with the concrete binding where it&#39;s been used.</li>
+                <li>If no <em>&quot;replace myself&quot;</em> delegate exists, the unresolved binding will have 
+                    to keep reference to the concrete binding. This will result in 
+                    double-dispatching and a slight performance hit, but the program will run as 
+                    expected.</li>
+                <li>If no concrete binding exists, keep the binding binding. May be flag it as 
+                    unresolved. In this case it is an error 
+                    binding and usage (reading/writing of the variable) will result in an runtime 
+                    error.</li>
+            </ol>
+            </ol>
+        <p>
+            Hopefully, when all source code files are read and the above is executed, there 
+            will be no unresolved bindings left.</p>
+        <p>
+            Same rules are similar for all types of globals: classes, pool, global variables 
+            and global constants.</p>
+        <h3>
+            Initializing and Using a Global Binding</h3>
+        <p>
+            A global binding is similar to <strong>Association</strong>, except that besides key 
+            and value, it may have additional attributes it may need for its scope and 
+            context.</p>
+        <p>
+            A binding&#39;s value is accessed through accessor methods / properties. This is 
+            semantically equal to reading or setting the value of the variable. Constant 
+            bindings of course have only getter method and no setter method.</p>
+        <p>
+            A special <em>private setter</em> method exists on all bindings, so they can be 
+            initialized by the initializer - as part of the source code reading process.</p>
+        <p>
+            The environment keeps a list of unresolved bindings (hopefully empty) that if 
+            used are equal to error binding.</p>
+        <h3>
+            Implementation Notes</h3>
+        <p>
+            Because of the requirements listed above, we will not modify the live 
+            environment directly. We will need to process the source code
+            <span class="style1">inside a transaction</span>. For this purpose:</p>
+        <ol>
+            <li>Create a transaction object called <strong>InstallerContext</strong>. Preferably 
+                for concurrency, this object should block and disallow other changes to the 
+                environment while the operation is running.</li>
+            <li>File in the source code (interchange files) and process defintions creating <em>
+                unresolved bindings</em> where needed.</li>
+            <li>Resolve the unresolved bindings, and <span class="style1">fail</span> if there 
+                still are unresolved bindings left.</li>
+            <li>Validate other rules, such as class consistency etc. as described in X3J20.</li>
+            <li>Commit definitions to the environment - possible by creating a local copy of it 
+                (for concurrency purposes). At this point, definitions should be consistent, but 
+                not initialized.</li>
+            <li>Run initializers. Those are run outside of the transaction context, because we 
+                have no way to roll back the changes. For example, an initializer may overwrite 
+                an arbitrary global, even is&#39;s not defined as part of the filed in source code.</li>
+        </ol>
+	
+	</body>
+</html>

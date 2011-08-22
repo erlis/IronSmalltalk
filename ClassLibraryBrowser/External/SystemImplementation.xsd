@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SystemDescription"
+    targetNamespace="http://schemas.ironsmalltalk.org/version1.0/Tools/SystemImplementation.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://schemas.ironsmalltalk.org/version1.0/Tools/SystemImplementation.xsd"
+    xmlns:sd="http://schemas.ironsmalltalk.org/version1.0/Tools/SystemImplementation.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:simpleType name="HtmlString">
+    <xs:restriction base="xs:string"></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SourceCode">
+    <xs:restriction base="xs:string"></xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SystemImplementation">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Class" minOccurs="0" maxOccurs="unbounded" >
+          <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="1">
+              <xs:element name="ImplementedInstanceProtocols" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Protocol" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ImplementedClassProtocols" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Protocol" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="InstanceVariables" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Variable" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ClassVariables" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Variable" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ClassInstanceVariables" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Variable" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SharedPools" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Pool" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="InstanceMethods" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Method" type="Method" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ClassMethods" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Method" type="Method" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Initializer" minOccurs="0" maxOccurs="1" type="Initializer" />
+              <xs:element name="Description" minOccurs="0" maxOccurs="1" type="HtmlString" />
+              <xs:element name="Annotations" minOccurs="0" maxOccurs="1" type="Annotations" />
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="instanceState" use="required" >
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="namedObjectVariables" />
+                  <xs:enumeration value="byteIndexable" />
+                  <xs:enumeration value="objectIndexable" />
+                  <xs:enumeration value="native" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="definingProtocol" type="xs:string" use="optional" />
+            <xs:attribute name="superclassName" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Global" minOccurs="0" maxOccurs="unbounded" >
+          <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="1">
+              <xs:element name="ImplementedProtocols" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Protocol" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Initializer" minOccurs="0" maxOccurs="1" type="Initializer" />
+              <xs:element name="Description" minOccurs="0" maxOccurs="1" type="HtmlString" />
+              <xs:element name="Annotations" minOccurs="0" maxOccurs="1" type="Annotations" />
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="type" use="required" >
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="variable" />
+                  <xs:enumeration value="constant" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="definingProtocol" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Pool" minOccurs="0" maxOccurs="unbounded" >
+          <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="1">
+              <xs:element name="PoolValue" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence minOccurs="1" maxOccurs="1">
+                    <xs:element name="Initializer" minOccurs="0" maxOccurs="1" type="Initializer" />
+                    <xs:element name="Annotations" minOccurs="0" maxOccurs="1" type="Annotations" />
+                  </xs:sequence>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="type" use="required" >
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="variable" />
+                        <xs:enumeration value="constant" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Description" minOccurs="0" maxOccurs="1" type="HtmlString" />
+              <xs:element name="Annotations" minOccurs="0" maxOccurs="1" type="Annotations" />
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="definingProtocol" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType abstract="false" name="Method">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="Source" minOccurs="1" maxOccurs="1" type="xs:string" />
+      <xs:element name="Documentation" minOccurs="0" maxOccurs="1" >
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Synopsis" minOccurs="0" maxOccurs="1" type="HtmlString" />
+            <xs:element name="Definition" minOccurs="0" maxOccurs="1" >
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="HtmlString">
+                    <xs:attribute name="protocol" type="xs:string" use="required" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Refinement" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="HtmlString">
+                    <xs:attribute name="protocol" type="xs:string" use="required" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Protocol" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:attribute name="name" type="xs:string" use="required" />
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+                <xs:attribute name="name" type="xs:string" use="required" />
+                <xs:attribute name="aliasing" use="required">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="unspecified"/>
+                      <xs:enumeration value="captured"/>
+                      <xs:enumeration value="uncaptured"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ReturnValue" minOccurs="0" maxOccurs="1" >
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Protocol" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:attribute name="name" type="xs:string" use="required" />
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Description" minOccurs="0" maxOccurs="1" type="HtmlString" />
+                </xs:sequence>
+                <xs:attribute name="aliasing" use="required">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="unspecified"/>
+                      <xs:enumeration value="state"/>
+                      <xs:enumeration value="new"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Errors" minOccurs="0" maxOccurs="1" type="HtmlString" />
+            <xs:element name="Source" minOccurs="0" maxOccurs="1" type="SourceCode" />
+            <xs:element name="Annotations" minOccurs="0" maxOccurs="1" type="Annotations" />
+          </xs:sequence>
+          <xs:attribute name="refined" type="xs:boolean" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="selector" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType abstract="false" name="Annotations">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Annotation" nillable="true">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="key" type="xs:string" use="required"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType abstract="false" name="Initializer">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="Source" minOccurs="1" maxOccurs="1" type="SourceCode" />
+      <xs:element name="Annotations" minOccurs="0" maxOccurs="1" type="Annotations" />
+    </xs:sequence>
+    <xs:attribute default="0" name="sortKey" type="xs:decimal" use="optional" />
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,86 @@
+﻿About this folder
+=================
+
+To ensure high quality product, which CONFORMS 100% to the ANSI Smalltalk standard,
+it is desired that conformance can be CHECKED automatically without human intervention.
+
+That's obviously not possible, but we can aim to get as close as possible. The
+goal is to automatically check that identifiers, names and similar are not
+misspelled or misplaced. Even better, if a script or similar can pre-generate
+empty method bodies that conform to the standard. Then we "only" need to fill in
+the method implementation.
+
+The best way to achieve the goal was to convert the needed data from the 
+"5. Standard Class Library" chapter to some form of computer readable metadata.
+For that purpose, the PDF file (file: "ANSI INCITS 319-1998 (R2007).pdf") was 
+converted to intermediate XML (file: "X3J20.xml")  containing the document text. 
+The intermediate XML was analyzed and converted to strict XML file containing
+the needed meta information (file: "SystemDescription.xml"). This file is the base 
+for the implementation of the class library in our Smalltalk.
+
+
+Legal Issues
+============
+- The ANSI document is licensed for single user use only to "Todor Todorov/
+  Scientia Software ApS". Therefore other people should not view it.
+
+- Copying of the ANSI document is prohibited. This raises questions if the
+  extraction of the intermediate XML file is legal. Same applies to the 
+  SystemDescription.xml file, which contains the meta information about the class
+  library, since it is based on intermediate file.
+  
+- Viewing of the XML files by people other than "Todor Todorov" may be a breach
+  of the licensing terms in the ANSI document (since the XML files are derived from it).
+
+However:
+- Generating a Smalltalk Class Library implementation from the document should
+  be 100% legal. The document itself mentions in the "1. Goals and Scope" chapter:
+  "1. working only from the standard, a conforming implementation can be produced."
+
+- It shouldn't matter if the end result, i.e. the class library, is generated
+  manually by reading the standard and re-typing names or identifiers, or as
+  in our case (to ensure high quality) automatically generated from the document.
+
+Therefore:
+- It is questionable if 3rd parties may view the PDF document and the intermediate
+  XML documents.
+
+- But it should be 100% legal for 3rd parties to view and work on the final product, 
+  i.e. on the Standard Smalltalk Class Library.
+
+
+In This Folder
+==============
+ANSI INCITS 319-1998 (R2007).pdf	ANSI document w. the ST standard.
+SystemDescription.xml				The strict XML output'ed from the PDF document
+pdftohtml.zip						Tool to convert the PDF to intermediate XML
+Read Me.txt							This file
+X3J20.st							VSE Smalltalk code that converts the PDF to intermediate XML
+X3J20.xml							The intermediate XML file
+
+
+Convertion
+==========
+1. Get the ANSI 319-1998 PDF document.
+2. Get and extract "pdftohtml.zip" 
+   NB: I found this in the interet. I am not sure if it is virus free, 
+   so run it inside an isolated environment, such as a VMWare machine!
+3. Convert the PDF file to intermediate XML file
+   RUN: pdftohtml.exe -f 44 -l 283 -xml ANSI.pdf
+   NB: Change the name of the input ANSI.pdf document
+   NB: From page 44 to page 283 (i.e. Chapter 5.)
+4. Use VSE to convert the intermediate XML to strict XML
+   - Load the X3J20.st script
+   - This uses private classes and more, figure it out and fix it!
+   - Patch the paths in STClassLibrary class>>convert.
+   - Execute STClassLibrary class>>convert
+   * This loads the intermediate XML into memory.
+   * Analyzes it and creates objects out of it.
+   * It patches and cleans up inconsistencies in the ANSI document.
+   * It outputs the strict XML
+   * VSE was chosen for convenience (what I had at hand).
+5. Optionally, add XSD Reference. Fix the <SystemDescription> tab, as:
+  <SystemDescription 
+    xmlns="http://schemas.ironsmalltalk.org/version1.0/Tools/SystemDescription.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="SystemDescription.xsd" >

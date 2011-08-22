@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SolutionDir)\Common.proj" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{59F64346-DE49-45FC-933E-8F74784DBD2D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestPlayground</RootNamespace>
+    <AssemblyName>TestPlayground</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SilverlightDebug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\SilverlightDebug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\TestPlayground.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SilverlightRelease|x86'">
+    <OutputPath>bin\x86\SilverlightRelease\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\TestPlayground.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Documents\Tech Documents\DLR\dlr-52406\DLR_Main\bin\Debug\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BulkParseTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BulkParseTester.Designer.cs">
+      <DependentUpon>BulkParseTester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tester.cs" />
+    <Compile Include="WorkspaceTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkspaceTester.Designer.cs">
+      <DependentUpon>WorkspaceTester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsoleErrorSink.cs" />
+    <Compile Include="InstallTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstallTester.Designer.cs">
+      <DependentUpon>InstallTester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LexTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LexTester.Designer.cs">
+      <DependentUpon>LexTester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParseTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParseTester.Designer.cs">
+      <DependentUpon>ParseTester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestTools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestTools.Designer.cs">
+      <DependentUpon>TestTools.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BulkParseTester.resx">
+      <DependentUpon>BulkParseTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkspaceTester.resx">
+      <DependentUpon>WorkspaceTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstallTester.resx">
+      <DependentUpon>InstallTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LexTester.resx">
+      <DependentUpon>LexTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParseTester.resx">
+      <DependentUpon>ParseTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="TestTools.resx">
+      <DependentUpon>TestTools.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Test.ist" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IronSmalltalk.AstJitCompiler\IronSmalltalk.AstJitCompiler.csproj">
+      <Project>{A5C3F31C-DD5F-44BC-9D8F-103E136A13F7}</Project>
+      <Name>IronSmalltalk.AstJitCompiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.Common\IronSmalltalk.Common.csproj">
+      <Project>{CBBBA006-546A-4DFF-95A9-D7B1544205AD}</Project>
+      <Name>IronSmalltalk.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.Compiler\IronSmalltalk.Compiler.csproj">
+      <Project>{8C1EF7F5-B3AF-401B-9223-E10EF00EBAE6}</Project>
+      <Name>IronSmalltalk.Compiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.Core\IronSmalltalk.Runtime.csproj">
+      <Project>{876AB5DB-133A-47DC-B912-62511E312ED6}</Project>
+      <Name>IronSmalltalk.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.DefinitionInstaller\IronSmalltalk.DefinitionInstaller.csproj">
+      <Project>{0BF739EF-002C-4B90-A06B-5E6639FAD2CF}</Project>
+      <Name>IronSmalltalk.DefinitionInstaller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.Hosting\IronSmalltalk.Hosting.csproj">
+      <Project>{C3A588AE-808A-4A8E-B460-18FAAB3F6D20}</Project>
+      <Name>IronSmalltalk.Hosting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.InterchangeInstaller\IronSmalltalk.InterchangeInstaller.csproj">
+      <Project>{33CC4F2A-E078-4130-89E1-F48752ACAB38}</Project>
+      <Name>IronSmalltalk.InterchangeInstaller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.VSECompatibility\IronSmalltalk.VSECompatibility.csproj">
+      <Project>{164CB761-F466-4C76-B3F1-31537BD787E7}</Project>
+      <Name>IronSmalltalk.VSECompatibility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk\IronSmalltalk.csproj">
+      <Project>{F03C018B-B9AD-4D3C-A1BA-F459BC544C97}</Project>
+      <Name>IronSmalltalk</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

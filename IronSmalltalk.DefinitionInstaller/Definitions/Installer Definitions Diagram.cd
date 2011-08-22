@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.BindableDefinition">
+    <Position X="13.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\BindableDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.ClassDefinition">
+    <Position X="6.75" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AASAAAQAAACAAAAEBAIAAACAAQAAAAgAAACAAAAAAAA=</HashCode>
+      <FileName>Definitions\ClassDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.DefinitionBase">
+    <Position X="20" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAEAAAAQAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\DefinitionBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.GlobalBase">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAEAAQAAAAAAAgAAACAAAAAAAA=</HashCode>
+      <FileName>Definitions\GlobalBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.GlobalDefinition">
+    <Position X="11.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAgAEAAAgAAACAAAAAAAA=</HashCode>
+      <FileName>Definitions\GlobalDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.GlobalVariableDefinition">
+    <Position X="12.5" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\GlobalVariableDefinition.cs</FileName>
+      <NewMemberFileName>Runtime\Installer\Definitions\GlobalDefinition.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.GlobalConstantDefinition">
+    <Position X="9.75" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\GlobalConstantDefinition.cs</FileName>
+      <NewMemberFileName>Runtime\Installer\Definitions\GlobalDefinition.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.GlobalInitializer">
+    <Position X="28.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\GlobalInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.InitializerDefinition">
+    <Position X="30.5" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Definitions\InitializerDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.MethodDefinition">
+    <Position X="24" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAACAAAIAACAEAAAAAAAAAgAAAAAgAAAAAAA=</HashCode>
+      <FileName>Definitions\MethodDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.InstanceMethodDefinition">
+    <Position X="25.5" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAEAAAAAAAAAAAAAgAAAAAgAAAAAAA=</HashCode>
+      <FileName>Definitions\InstanceMethodDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.ClassMethodDefinition">
+    <Position X="22.75" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAEAAAAAAAAAAAAAgAAAAAgAAAAAAA=</HashCode>
+      <FileName>Definitions\ClassMethodDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.PoolDefinition">
+    <Position X="15.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAAAAAAAAEAAAAAAAAAAAAAAgAAACAAAAAAAA=</HashCode>
+      <FileName>Definitions\PoolDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.PoolValueDefinition">
+    <Position X="18.75" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\PoolValueDefinition.cs</FileName>
+      <NewMemberFileName>Runtime\Installer\Definitions\PoolVariableDefinition.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.PoolVariableDefinition">
+    <Position X="20.25" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\PoolVariableDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.PoolConstantDefinition">
+    <Position X="17.5" Y="8.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\PoolConstantDefinition.cs</FileName>
+      <NewMemberFileName>Runtime\Installer\Definitions\PoolVariableDefinition.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.PoolVariableInitializer">
+    <Position X="30.5" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\PoolVariableInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.ProgramInitializer">
+    <Position X="33" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\ProgramInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Runtime.Installer.Definitions.CodeBasedDefinition&lt;TCode&gt;" Collapsed="true">
+    <Position X="28" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAACAABAAAA=</HashCode>
+      <FileName>Definitions\CodeBasedDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

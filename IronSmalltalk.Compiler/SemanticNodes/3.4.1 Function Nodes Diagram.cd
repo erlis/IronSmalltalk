@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.FunctionNode">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAEAAAAAAIAAABAAAAAABAAAAAAA=</HashCode>
+      <FileName>Compiler\SemanticNodes\3.4.1 Functions.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Statements" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.TemporaryVariableNode">
+    <Position X="10" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Compiler\SemanticNodes\3.4.1 Functions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.MethodNode">
+    <Position X="5.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAAAAIAAAAAEAAAAAAAAAAAAAAIAAAAIAAAgA=</HashCode>
+      <FileName>Compiler\SemanticNodes\3.4.2 Methods.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Arguments" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.ArgumentNode">
+    <Position X="3.25" Y="10" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Compiler\SemanticNodes\3.4.2 Methods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.MethodArgumentNode">
+    <Position X="4.75" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Compiler\SemanticNodes\3.4.2 Methods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.InitializerNode">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAgA=</HashCode>
+      <FileName>Compiler\SemanticNodes\3.4.3 Initializers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.BlockNode">
+    <Position X="1.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIAAAQAAAAAAAAAAAEAAQAAAAAAAAQAAIAAAAIAABgA=</HashCode>
+      <FileName>Compiler\SemanticNodes\3.4.4 Blocks.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Arguments" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.BlockArgumentNode">
+    <Position X="2" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Compiler\SemanticNodes\3.4.4 Blocks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.VariableNode">
+    <Position X="8.5" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAgA=</HashCode>
+      <FileName>Compiler\SemanticNodes\VariableNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.ParseNode" Collapsed="true">
+    <Position X="3.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAIAAAgA=</HashCode>
+      <FileName>Compiler\SemanticNodes\ParseNode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.StatementNode" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAAAI=</HashCode>
+      <FileName>Compiler\SemanticNodes\3.4.5 Statements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.SemanticNode" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Compiler\SemanticNodes\ParseNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

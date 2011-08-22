@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SolutionDir)\Common.proj" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F91C2FA4-535B-40BF-9B1D-E7B5FD785F6F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IronSmalltalk.Tools.ClassLibraryBrowser</RootNamespace>
+    <AssemblyName>ClassLibraryBrowser</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SilverlightDebug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\SilverlightDebug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\ClassLibraryBrowser.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SilverlightRelease|x86'">
+    <OutputPath>bin\x86\SilverlightRelease\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\ClassLibraryBrowser.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\AppendingComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassDefinitionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassDefinitionControl.Designer.cs">
+      <DependentUpon>ClassDefinitionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassesControl.Designer.cs">
+      <DependentUpon>ClassesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassHierarchyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassHierarchyControl.Designer.cs">
+      <DependentUpon>ClassHierarchyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassMethodsEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassMethodsEditorControl.Designer.cs">
+      <DependentUpon>ClassMethodsEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassMethodsListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassMethodsListControl.Designer.cs">
+      <DependentUpon>ClassMethodsListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassMethodsProtocolsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Classes\ClassMethodsProtocolsControl.Designer.cs">
+      <DependentUpon>ClassMethodsProtocolsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Initializers\InitializersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Initializers\InitializersControl.Designer.cs">
+      <DependentUpon>InitializersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Methods\MethodDefinitionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Methods\MethodDefinitionControl.Designer.cs">
+      <DependentUpon>MethodDefinitionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Classes\MethodHelper.cs" />
+    <Compile Include="Controls\Globals\GlobalDefinitionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Globals\GlobalDefinitionControl.Designer.cs">
+      <DependentUpon>GlobalDefinitionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Globals\GlobalsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Globals\GlobalsControl.Designer.cs">
+      <DependentUpon>GlobalsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pools\PoolsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Pools\PoolsControl.Designer.cs">
+      <DependentUpon>PoolsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Protocols\ConformingProtocolsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Protocols\ConformingProtocolsControl.Designer.cs">
+      <DependentUpon>ConformingProtocolsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Protocols\ConformsToProtocolsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Protocols\ConformsToProtocolsControl.Designer.cs">
+      <DependentUpon>ConformsToProtocolsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DescriptionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DescriptionControl.Designer.cs">
+      <DependentUpon>DescriptionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IMainFormMenuConsumer.cs" />
+    <Compile Include="Controls\Pools\PoolDefinitionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Pools\PoolDefinitionControl.Designer.cs">
+      <DependentUpon>PoolDefinitionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pools\PoolValuesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Pools\PoolValuesControl.Designer.cs">
+      <DependentUpon>PoolValuesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolDefinitionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolDefinitionControl.Designer.cs">
+      <DependentUpon>ProtocolDefinitionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolGlobalControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolGlobalControl.Designer.cs">
+      <DependentUpon>ProtocolGlobalControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolMessageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolMessageControl.Designer.cs">
+      <DependentUpon>ProtocolMessageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolMessagesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolMessagesControl.Designer.cs">
+      <DependentUpon>ProtocolMessagesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Protocols\ProtocolsControl.Designer.cs">
+      <DependentUpon>ProtocolsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SourceEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SourceEditControl.Designer.cs">
+      <DependentUpon>SourceEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TreeViewDragDropHelper.cs" />
+    <Compile Include="Controls\Validation\ImplementationValidationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Validation\ImplementationValidationControl.Designer.cs">
+      <DependentUpon>ImplementationValidationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VetoingListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Coordinators\ChangTransaction.cs" />
+    <Compile Include="Coordinators\CollectionHolder.cs" />
+    <Compile Include="Coordinators\SortedSetHolder.cs" />
+    <Compile Include="Coordinators\ValueHolder.cs" />
+    <Compile Include="Definitions\Description\SystemDescription.cs" />
+    <Compile Include="ClassLibraryBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassLibraryBrowser.Designer.cs">
+      <DependentUpon>ClassLibraryBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Definitions\Description\GlobalDefinition.cs" />
+    <Compile Include="Definitions\HtmlString.cs" />
+    <Compile Include="Definitions\Implementation\Annotations.cs" />
+    <Compile Include="Definitions\Implementation\GlobalItem.cs" />
+    <Compile Include="Definitions\Implementation\IInitializableObject.cs" />
+    <Compile Include="Definitions\Implementation\MethodDocumentation.cs" />
+    <Compile Include="Definitions\Implementation\SystemImplementation.cs" />
+    <Compile Include="Definitions\Implementation\Initializer.cs" />
+    <Compile Include="Definitions\Description\Message.cs" />
+    <Compile Include="Definitions\Description\Global.cs" />
+    <Compile Include="Definitions\NotifyingCollection.cs" />
+    <Compile Include="Definitions\Description\Parameter.cs" />
+    <Compile Include="Definitions\Description\PoolValue.cs" />
+    <Compile Include="Definitions\NotifyingHashSet.cs" />
+    <Compile Include="Definitions\NotifyingSortedSet.cs" />
+    <Compile Include="Definitions\Saving\FileOutWriterIST10.cs" />
+    <Compile Include="Definitions\Saving\FileOutWriterSIF10.cs" />
+    <Compile Include="Definitions\Saving\FileOutWriterBase.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Definitions\Description\Protocol.cs" />
+    <Compile Include="Definitions\Description\Specification.cs" />
+    <Compile Include="Definitions\Description\ReturnValue.cs" />
+    <Compile Include="Definitions\Implementation\Class.cs" />
+    <Compile Include="Definitions\Implementation\Definition.cs" />
+    <Compile Include="Definitions\Implementation\Global.cs" />
+    <Compile Include="Definitions\Implementation\Method.cs" />
+    <Compile Include="Definitions\Implementation\Pool.cs" />
+    <Compile Include="Definitions\Implementation\PoolValue.cs" />
+    <Compile Include="Definitions\SmalltalkSystem.cs" />
+    <Compile Include="SelectDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectDialog.Designer.cs">
+      <DependentUpon>SelectDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Testing\Workspace.cs" />
+    <Compile Include="Testing\WorkspaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Testing\WorkspaceForm.Designer.cs">
+      <DependentUpon>WorkspaceForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Controls\Classes\ClassDefinitionControl.resx">
+      <DependentUpon>ClassDefinitionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassLibraryBrowser.resx">
+      <DependentUpon>ClassLibraryBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Classes\ClassesControl.resx">
+      <DependentUpon>ClassesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Classes\ClassHierarchyControl.resx">
+      <DependentUpon>ClassHierarchyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Classes\ClassMethodsEditorControl.resx">
+      <DependentUpon>ClassMethodsEditorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Classes\ClassMethodsListControl.resx">
+      <DependentUpon>ClassMethodsListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Classes\ClassMethodsProtocolsControl.resx">
+      <DependentUpon>ClassMethodsProtocolsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Initializers\InitializersControl.resx">
+      <DependentUpon>InitializersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Methods\MethodDefinitionControl.resx">
+      <DependentUpon>MethodDefinitionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Globals\GlobalDefinitionControl.resx">
+      <DependentUpon>GlobalDefinitionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Globals\GlobalsControl.resx">
+      <DependentUpon>GlobalsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Pools\PoolsControl.resx">
+      <DependentUpon>PoolsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Protocols\ConformingProtocolsControl.resx">
+      <DependentUpon>ConformingProtocolsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Protocols\ConformsToProtocolsControl.resx">
+      <DependentUpon>ConformsToProtocolsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DescriptionControl.resx">
+      <DependentUpon>DescriptionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Pools\PoolDefinitionControl.resx">
+      <DependentUpon>PoolDefinitionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Pools\PoolValuesControl.resx">
+      <DependentUpon>PoolValuesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Protocols\ProtocolDefinitionControl.resx">
+      <DependentUpon>ProtocolDefinitionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Protocols\ProtocolGlobalControl.resx">
+      <DependentUpon>ProtocolGlobalControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Protocols\ProtocolMessageControl.resx">
+      <DependentUpon>ProtocolMessageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Protocols\ProtocolMessagesControl.resx">
+      <DependentUpon>ProtocolMessagesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Protocols\ProtocolsControl.resx">
+      <DependentUpon>ProtocolsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SourceEditControl.resx">
+      <DependentUpon>SourceEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Validation\ImplementationValidationControl.resx">
+      <DependentUpon>ImplementationValidationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SelectDialog.resx">
+      <DependentUpon>SelectDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Testing\WorkspaceForm.resx">
+      <DependentUpon>WorkspaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Coordinators\Coordinators Diagram.cd" />
+    <None Include="Definitions\Description\Definitions.cd" />
+    <None Include="External\ANSI INCITS 319-1998 %28R2007%29.pdf" />
+    <None Include="External\LicenseAdder.zip" />
+    <None Include="External\SystemImplementation.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="External\SystemDescription.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="External\pdftohtml.zip" />
+    <None Include="External\X3J20.st" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Definitions\Implementation\Runtime Definitions.cd" />
+    <None Include="External\SmalltalkSystem.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="External\X3J20.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="External\SystemImplementation.xml" />
+    <Content Include="External\SmalltalkSystem.xml" />
+    <Content Include="Definitions\Description\Read Me.htm" />
+    <Content Include="External\Read Me.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IronSmalltalk.AstJitCompiler\IronSmalltalk.AstJitCompiler.csproj">
+      <Project>{A5C3F31C-DD5F-44BC-9D8F-103E136A13F7}</Project>
+      <Name>IronSmalltalk.AstJitCompiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.Common\IronSmalltalk.Common.csproj">
+      <Project>{CBBBA006-546A-4DFF-95A9-D7B1544205AD}</Project>
+      <Name>IronSmalltalk.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.Compiler\IronSmalltalk.Compiler.csproj">
+      <Project>{8C1EF7F5-B3AF-401B-9223-E10EF00EBAE6}</Project>
+      <Name>IronSmalltalk.Compiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.Core\IronSmalltalk.Runtime.csproj">
+      <Project>{876AB5DB-133A-47DC-B912-62511E312ED6}</Project>
+      <Name>IronSmalltalk.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.DefinitionInstaller\IronSmalltalk.DefinitionInstaller.csproj">
+      <Project>{0BF739EF-002C-4B90-A06B-5E6639FAD2CF}</Project>
+      <Name>IronSmalltalk.DefinitionInstaller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk.InterchangeInstaller\IronSmalltalk.InterchangeInstaller.csproj">
+      <Project>{33CC4F2A-E078-4130-89E1-F48752ACAB38}</Project>
+      <Name>IronSmalltalk.InterchangeInstaller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSmalltalk\IronSmalltalk.csproj">
+      <Project>{F03C018B-B9AD-4D3C-A1BA-F459BC544C97}</Project>
+      <Name>IronSmalltalk</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.StatementNode">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <AssociationLine Name="Expression" Type="IronSmalltalk.Compiler.SemanticNodes.ExpressionNode" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="4.25" Y="3.125" />
+        <Point X="5.5" Y="3.125" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAAAI=</HashCode>
+      <FileName>SemanticNodes\3.4.5 Statements.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Expression" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.StatementSequenceNode">
+    <Position X="1.25" Y="5" Width="2" />
+    <AssociationLine Name="NextStatement" Type="IronSmalltalk.Compiler.SemanticNodes.StatementNode" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.875" Y="5.062" />
+        <Point X="1.875" Y="3.812" />
+        <Point X="2.75" Y="3.812" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAAAAAAAAAAEAAAAAAAgAAAAAAAAAAAIAAAgA=</HashCode>
+      <FileName>SemanticNodes\3.4.5 Statements.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="NextStatement" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.ReturnStatementNode">
+    <Position X="3.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAIABAgA=</HashCode>
+      <FileName>SemanticNodes\3.4.5.1 Return Statement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.ExpressionNode" Collapsed="true">
+    <Position X="5.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SemanticNodes\3.4.5.2 Expressions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticNodes.FunctionNode">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Statements" Type="IronSmalltalk.Compiler.SemanticNodes.StatementNode" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="1.25" />
+        <Point X="3.312" Y="1.25" />
+        <Point X="3.312" Y="2.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAEAAAAAAIAAABAAAAAABAAAAAAA=</HashCode>
+      <FileName>SemanticNodes\3.4.1 Functions.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Statements" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

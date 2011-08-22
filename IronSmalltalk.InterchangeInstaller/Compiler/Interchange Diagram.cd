@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Compiler.Interchange.InterchangeFormatParser">
+    <Position X="2" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACIAEQAAABACAAgABAAgEAAAAIQAAAAIAAQIAECAgY=</HashCode>
+      <FileName>Compiler\InterchangeFormatParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.InterchangeChunk">
+    <Position X="16.25" Y="4.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAEAgAAAAIAAAAAAAAQAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Compiler\InterchangeChunk.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IronSmalltalk.Interchange.InterchangeFormatProcessor">
+    <Position X="10.75" Y="1" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>IACQAAQAAAAAAAAiAAAAAAAAEABAAAAEABgCgQAAAAA=</HashCode>
+      <FileName>InterchangeFormatProcessor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="VersionService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IronSmalltalk.Interchange.InterchangeVersionService">
+    <Position X="6" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAgACAAAAAAABEAAIAIAAAAgAgAAAAAA=</HashCode>
+      <FileName>InterchangeVersionService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Interchange.InterchangeVersionService10">
+    <Position X="6" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InterchangeVersionService10.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.SemanticAnalysis.ParserBase">
+    <Position X="2" Y="0.75" Width="2.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="IronSmalltalk.Interchange.IInterchangeFileInProcessor">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACIACAAAAEAAAAAAAAAAAAAIABAAAAACAAA=</HashCode>
+      <FileName>IInterchangeFileInProcessor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

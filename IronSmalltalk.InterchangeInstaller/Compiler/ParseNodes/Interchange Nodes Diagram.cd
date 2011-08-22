@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.AnnotationNode">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAIAAAAAAAAAQAAAAAAAAAAAAIAAAAAAAgAAIAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\AnnotationNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.ClassDefinitionNode">
+    <Position X="36.75" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AICAAAQAAACAACAABAIAEAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\ClassDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.ClassMethodDefinitionNode">
+    <Position X="11" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\MethodDefinitionNode.cs</FileName>
+      <NewMemberFileName>Compiler\Interchange\ParseNodes\ClassMethodDefinitionNode.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.GlobalDefinitionNode">
+    <Position X="26.75" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAIIAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\GlobalDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.GlobalInitializationNode">
+    <Position X="14" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\GlobalInitializationNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.InterchangeElementNode">
+    <Position X="22.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIABAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\InterchangeElementNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.InterchangeParseNode" Collapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAgA=</HashCode>
+      <FileName>Compiler\ParseNodes\InterchangeParseNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.InterchangeVersionIdentifierNode">
+    <Position X="1.25" Y="2" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\InterchangeVersionIdentifierNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.MethodDefinitionNode">
+    <Position X="9.5" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAIIAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\MethodDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.PoolDefinitionNode">
+    <Position X="22.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\PoolDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.PoolValueInitializationNode">
+    <Position X="33.75" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\PoolValueInitializationNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.ProgramInitializationNode">
+    <Position X="31" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\ProgramInitializationNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.GlobalVariableDefinitionNode">
+    <Position X="25" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\GlobalDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.GlobalConstantDefinitionNode">
+    <Position X="28" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\GlobalDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.InstanceMethodDefinitionNode">
+    <Position X="7.75" Y="9" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\MethodDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.PoolVariableDefinitionNode">
+    <Position X="19.75" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\PoolItemDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.PoolConstantDefinitionNode">
+    <Position X="16.75" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\PoolItemDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.PoolItemDefinitionNode">
+    <Position X="18.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIIAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\PoolItemDefinitionNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IronSmalltalk.Compiler.Interchange.ParseNodes.InterchangeUnitNode" Collapsed="true">
+    <Position X="21.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Compiler\ParseNodes\InterchangeElementNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
