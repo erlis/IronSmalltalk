@@ -68,9 +68,6 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup Condition=" '$(SilverlightBuild)' != 'true' ">
-    <Reference Include="Microsoft.Scripting">
-      <HintPath>..\..\..\..\..\..\..\Documents\Tech Documents\DLR\dlr-54115\DLR_Main\bin\Debug\Microsoft.Scripting.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -132,6 +129,11 @@
       <Project>{F03C018B-B9AD-4D3C-A1BA-F459BC544C97}</Project>
       <Name>IronSmalltalk</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\IronSmalltalk.ExternalDependencies\dlr\Microsoft.Scripting.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
